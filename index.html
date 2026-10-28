@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Oficial 30 Puertas — Open House Ibiza 2027</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --gold: #e5c358;
+            --gold-dark: #b89628;
+            --dark: #141414;
+            --gray-bg: #f3f3f0;
+            --border: #e2e2dd;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-bg);
+            color: var(--dark);
+            margin: 0;
+            padding: 95px 20px 40px 20px;
+        }
+
+        /* BARRA DE CONTROL SUPERIOR */
+        .topbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--dark);
+            color: #fff;
+            padding: 12px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .brand-badge {
+            background: var(--gold);
+            color: #000;
+            font-weight: 900;
+            padding: 6px 10px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            border-radius: 3px;
+        }
+        .topbar select, .topbar input {
+            background: #262626;
+            color: #fff;
+            border: 1px solid var(--gold);
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+        }
+        .topbar input { width: 250px; }
+        .topbar-btns {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .btn-top {
+            background: #2b2b2b;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 8px 13px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-top:hover { background: #3c3c3c; }
+        .btn-top.gold {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+        }
+
+        /* BANNER MODO QR INDIVIDUAL */
+        .modo-qr-banner {
+            max-width: 920px;
+            margin: 0 auto 15px auto;
+            background: #141414;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 6px;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid var(--gold);
+            font-size: 13px;
+        }
+        .modo-qr-banner button {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 6px 12px;
+            font-weight: 800;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* FICHA INDIVIDUAL */
+        .ficha-page {
+            max-width: 920px;
+            margin: 0 auto 50px auto;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            border: 1px solid var(--border);
+            page-break-after: always;
+            break-after: page;
+        }
+
+        .ficha-header {
+            background: var(--dark);
+            color: #fff;
+            padding: 22px 28px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: center;
+            border-bottom: 4px solid var(--gold);
+        }
+        .pilar-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: #000;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 4px 9px;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+        .ficha-title {
+            font-size: 25px;
+            font-weight: 900;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+        .id-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 12px;
+            color: #ccc;
+        }
+        .id-meta span strong { color: var(--gold); }
+
+        .qr-box {
+            background: #fff;
+            color: #000;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            width: 104px;
+            text-decoration: none;
+            display: block;
+        }
+        .qr-box img {
+            width: 84px;
+            height: 84px;
+            display: block;
+            margin: 0 auto;
+        }
+        .qr-box span {
+            display: block;
+            font-size: 8.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-top: 4px;
+            color: #111;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            border-bottom: 1px solid var(--border);
+        }
+        .foto-container {
+            position: relative;
+            background: #222;
+            min-height: 275px;
+            overflow: hidden;
+        }
+        .foto-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .btn-upload {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.82);
+            color: #fff;
+            border: 1px solid var(--gold);
+            padding: 7px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .autoria-panel {
+            padding: 20px 24px;
+            background: #fafaf8;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .block-label {
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold-dark);
+            margin-bottom: 8px;
+        }
+        .data-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 12px;
+        }
+        .data-item {
+            background: #fff;
+            padding: 9px 11px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        .data-item.full { grid-column: span 2; }
+        .data-item small {
+            display: block;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 2px;
+        }
+        .data-item div { font-weight: 600; color: #111; }
+
+        .nivel-divulgativo {
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--border);
+        }
+        .nivel-badge {
+            display: inline-block;
+            background: #eef6ec;
+            color: #1f5e24;
+            border: 1px solid #b7dfb9;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .divulgativa-box {
+            background: #fdfcf7;
+            border-left: 4px solid var(--gold);
+            padding: 14px 18px;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #222;
+            margin-bottom: 18px;
+        }
+        .divulgativa-box p { margin: 0 0 8px 0; }
+        .divulgativa-box p:last-child { margin-bottom: 0; }
+
+        .logistica-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .log-card {
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 11px 14px;
+            background: #fff;
+            font-size: 12px;
+            line-height: 1.48;
+        }
+        .log-card h4 {
+            margin: 0 0 5px 0;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #111;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 3px;
+            display: inline-block;
+        }
+
+        .nivel-tecnico {
+            background: #f7f7f4;
+            border-bottom: 1px solid var(--border);
+        }
+        .nivel-tecnico summary {
+            padding: 14px 28px;
+            font-size: 12.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: #eaeae4;
+            color: #111;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+        .summary-tag {
+            background: var(--dark);
+            color: var(--gold);
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+        .tecnico-body {
+            padding: 20px 28px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            font-size: 12px;
+        }
+        .tec-box {
+            background: #fff;
+            border: 1px solid #dcdcd4;
+            padding: 10px 13px;
+            border-radius: 4px;
+        }
+        .tec-box.full { grid-column: span 2; }
+        .tec-box strong {
+            display: block;
+            font-size: 9.5px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .ficha-footer {
+            padding: 13px 28px;
+            background: #fff;
+            font-size: 11px;
+            color: #555;
+        }
+        .relacionado-bar {
+            padding-bottom: 7px;
+            margin-bottom: 6px;
+            border-bottom: 1px dashed var(--border);
+            color: #222;
+        }
+        .prod-control {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 10px;
+            color: #666;
+        }
+
+        [contenteditable="true"]:hover { outline: 1px dashed var(--gold-dark); }
+        [contenteditable="true"]:focus { outline: 2px solid var(--gold); background: #fffef5; color: #000; }
+
+        @media (max-width: 760px) {
+            body { padding: 80px 10px 20px 10px; }
+            .hero-grid, .logistica-grid, .tecnico-body { grid-template-columns: 1fr; }
+            .tec-box.full, .data-item.full { grid-column: span 1; }
+            .ficha-header { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .topbar, .btn-upload, .modo-qr-banner { display: none !important; }
+            .ficha-page {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin: 0 0 20px 0;
+                max-width: 100%;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="topbar-left">
+            <span class="brand-badge">OHI 2027 · 30 FICHAS QR</span>
+            <select id="selectorFicha" onchange="seleccionarDesdeMenu()">
+                <option value="all">📚 Ver las 30 fichas completas</option>
+            </select>
+            <input type="text" id="customBaseUrl" placeholder="URL web (se detecta sola al subirlo)" oninput="actualizarQRs()">
+        </div>
+        <div class="topbar-btns">
+            <button class="btn-top" onclick="toggleDetalles(true)">➕ Abrir Nivel Técnico</button>
+            <button class="btn-top" onclick="toggleDetalles(false)">➖ Cerrar Nivel Técnico</button>
+            <button class="btn-top gold" onclick="window.print()">🖨️ Exportar a PDF</button>
+        </div>
+    </div>
+
+    <div class="modo-qr-banner" id="bannerQR">
+        <span>📱 <strong>MODO QR INDIVIDUAL:</strong> Estás visualizando la ficha exclusiva de este edificio.</span>
+        <button onclick="mostrarTodas()">Ver las 30 Puertas del Festival</button>
+    </div>
+
+    <div id="catalogoContainer"></div>
+
+    <script>
+        const espacios30 = [
+            {
+                num: "01",
+                nombre: "Castillo y Almudaina de Eivissa (Dalt Vila)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "C/ del Castell, s/n, Dalt Vila, 07800 Eivissa",
+                coordenadas: "38°54'19.8\"N 1°26'10.4\"E",
+                titularidad: "Pública (Estado / Consell Insular d'Eivissa)",
+                arquitecto: "Alarifes andalusíes (s. XII), maestros góticos (s. XIV) e ingenieros de Felipe II (s. XVI)",
+                fechas: "Obra islámica: s. X–XII | Torre del Homenaje: s. XIV | Cuarteles: s. XVIII",
+                reformas: "Intervención arqueológica y consolidación arquitectónica (2010–2024)",
+                importa: "Situado en la cota más alta de la acrópolis, condensa toda la historia del poder militar y político de la isla: desde el alcázar musulmán con sus nueve torres hasta el castillo cristiano y los cuarteles borbónicos.",
+                mirar: "Los lienzos de tapial calicostrado medieval, el puente de acceso sobre el foso interior, la esbelta Torre del Homenaje y las vistas de 360º hacia Formentera.",
+                curiosidad: "Las excavaciones en su interior han sacado a la luz estructuras fenicias del siglo VII a.C., probando 2.600 años de ocupación ininterrumpida.",
+                superficie: "9.800 m² de recinto fortificado",
+                sistema: "Muros de tapial calicostrado islámico, sillería gótica en arcos apuntados y bóvedas de mampostería en los cuarteles del siglo XVIII.",
+                materiales: "Tierra apisonada con cal, sillares de piedra arenisca (marès), piedra caliza local y morteros tradicionales de cal aérea.",
+                orientacion: "Dominante Sur-Sureste sobre el acantilado marítimo",
+                bioclimatica: "Aprovechamiento del régimen de brisas marinas (*embat*), patios sombreados y grandes aljibes subterráneos de recogida pluvial.",
+                catalogacion: "Patrimonio Mundial UNESCO (1999) y Bien de Interés Cultural (BIC - Monumento).",
+                docGrafica: "Fotos: Consell Insular d'Eivissa (CC-BY) | Planos estratigráficos cedidos | Vídeo 'La materia habla': Sí (El tapial y el marès).",
+                visita: "Sábado y Domingo (10:00–14:00) | Aforo: 20 pax/turno | Duración: 45 min | Guiada | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Primer patio accesible por rampa; recorrido superior con desniveles y escalones históricos no aptos para silla de ruedas.",
+                normas: "Fotos permitidas; prohibido salirse de las pasarelas señalizadas; calzado cerrado obligatorio; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Línea L45 (Minibús Dalt Vila, parada Catedral a 50 m) | A 1 min a pie de la Catedral (#02) y de la Antigua Curia (#18) | Ruta: 'Acrópolis UNESCO'.",
+                relacionado: "Reel: @openhouseibiza #Puerta01Castell | Mismo pilar: #02 Catedral, #08 Es Polvorí, #12 Baluarte de Sant Pere.",
+                img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "02",
+                nombre: "Catedral de Santa María de las Nieves (Dalt Vila)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "Plaça de la Catedral, s/n, Dalt Vila, 07800 Eivissa",
+                coordenadas: "38°54'20.5\"N 1°26'12.1\"E",
+                titularidad: "Pública / Eclesiástica (Bisbat d'Eivissa)",
+                arquitecto: "Maestros góticos (s. XIV) / Jaume Espinosa y Pere Ferro (Reforma barroca s. XVIII)",
+                fechas: "Fundación: 1235 | Ábside y torre gótica: s. XIV | Nave barroca: 1715–1728",
+                reformas: "Restauración integral de cubiertas, fachadas y Museo Diocesano (1996–2006)",
+                importa: "Erigida sobre la antigua mezquita mayor árabe tras la conquista de 1235, su silueta sobria y blanca preside el perfil marítimo de Ibiza y sintetiza el gótico catalán con la espacialidad barroca.",
+                mirar: "El campanario gótico de planta trapezoidal con sus ventanales ojivales, los potentes contrafuertes exteriores y la luminosa nave barroca blanca.",
+                curiosidad: "Sus muros son tan gruesos y carecen de adornos exteriores en su base porque el templo formaba parte activa de la línea defensiva contra ataques piratas.",
+                superficie: "1.480 m² construidos",
+                sistema: "Nave única con capillas entre contrafuertes laterales, bóveda de cañón con lunetos y torre campanario de sillería portante.",
+                materiales: "Sillería de piedra de marès en campanario y portada gótica, mampostería caliza revocada con cal y pavimentos de piedra.",
+                orientacion: "Eje litúrgico Este-Oeste (Ábside a levante, fachada principal a poniente)",
+                bioclimatica: "Elevada inercia térmica por muros de más de 1,3 m de espesor y ventilación natural superior a través de los lunetos.",
+                catalogacion: "Bien de Interés Cultural (BIC - Monumento) y Patrimonio Mundial UNESCO.",
+                docGrafica: "Fotos: Arxiu Diocesà d'Eivissa | Planos del Plan Director de la Catedral | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado (10:30–13:30) y Domingo (16:00–19:00) | Aforo: 25 pax | Duración: 40 min | Guiada (incluye Sacristía y Torre) | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Nave principal y museo accesibles por rampa lateral; campanario accesible solo por escalera de caracol; folletos en Braille.",
+                normas: "Fotos sin flash permitidas; silencio y vestimenta respetuosa; menores acompañados; sin mascotas salvo perros guía.",
+                comoLlegar: "Bus: Línea L45 (Parada Plaça de la Catedral a 15 m) | Frente a la Antigua Curia (#18) y a 1 min del Castillo (#01) | Ruta: 'Acrópolis UNESCO'.",
+                relacionado: "Carrusel: 'El faro espiritual de Dalt Vila' | Mismo pilar: #01 Castillo y Almudaina, #16 Ayuntamiento Can Botino, #18 Antigua Curia.",
+                img: "https://images.unsplash.com/photo-1548625361-1882cf0f4222?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "03",
+                nombre: "Casa Broner (Sa Penya)",
+                pilar: "El Legado Racionalista",
+                municipio: "Eivissa",
+                direccion: "Carreró de sa Penya, 15, Barrio de Sa Penya, 07800 Eivissa",
+                coordenadas: "38°54'32.1\"N 1°26'19.4\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa — Donación Gisela Broner)",
+                arquitecto: "Erwin Broner (Múnich, 1898 – 1971)",
+                fechas: "Proyecto: 1959 | Obra: 1960",
+                reformas: "Restauración arquitectónica y museográfica municipal (2009–2010)",
+                importa: "Obra cumbre del Movimiento Moderno en Baleares: la casa-estudio donde el arquitecto y pintor alemán Erwin Broner demostró cómo el funcionalismo de la Bauhaus ya latía en la arquitectura tradicional ibicenca.",
+                mirar: "El puente de hormigón que da acceso a la planta alta, el ventanal panorámico colgado sobre el acantilado marino y el mobiliario diseñado a medida en obra.",
+                curiosidad: "Broner respetó el peñón rocoso original del acantilado dejándolo emerger de forma escultórica dentro de su estudio de pintura en la planta inferior.",
+                superficie: "135 m² útiles en dos plantas",
+                sistema: "Estructura mixta de muros portantes de mampostería encalada, pilares metálicos esbeltos y losas planas de hormigón armado.",
+                materiales: "Hormigón visto y encalado, acero estructural, carpinterías de madera policromada (azul, amarillo y blanco) y pavimento cerámico.",
+                orientacion: "Norte-Noreste hacia el mar con lucernario captador orientado al Sur",
+                bioclimatica: "Captación solar de invierno mediante lucernario meridional en la sala, ventilación cruzada sobre el mar y lamas móviles de control lumínico.",
+                catalogacion: "Bien de Interés Cultural (BIC - Monumento, año 2000) y Registro DOCOMOMO Ibérico.",
+                docGrafica: "Fotos: MACE / Ajuntament d'Eivissa | Planos originales de Erwin Broner (Archivo COAIB) | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:00–14:00 y 16:30–19:30) | Aforo: 10 pax/turno | Duración: 30 min | Guiada por arquitectos | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Situada en las callejuelas escalonadas de Sa Penya; planta de vivienda accesible por pasarela; estudio inferior mediante escalera.",
+                normas: "Fotos sin trípode permitidas; uso obligatorio de calzas protectoras en el interior; menores acompañados; sin mascotas.",
+                comoLlegar: "A 5 min a pie desde el Puerto y el Mercat Vell (#22) | Bus: Líneas L10, L12 y L13 (Av. Bartomeu Roselló) | Ruta: 'Laboratorio Racionalista'.",
+                relacionado: "Reel: 'Bauhaus sobre el acantilado de Sa Penya' | Mismo pilar: #14 Can Pep Simó, #24 Gran Hotel Montesol, #15 Edificio Las Boas.",
+                img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "04",
+                nombre: "Teatro Pereyra (Eivissa)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "C/ del Comte de Rosselló, 3, 07800 Eivissa",
+                coordenadas: "38°54'33.5\"N 1°26'05.1\"E",
+                titularidad: "Privada (Bien de Interés Cultural con apertura concertada OHI)",
+                arquitecto: "Proyecto histórico: Ramón Pereyra (1898) | Rehabilitación: Equipo técnico 2018–2024",
+                fechas: "Inauguración original: 1899 | Reapertura tras rehabilitación integral: 2024",
+                reformas: "Restauración estructural, acústica y escénica completa finalizada en 2024",
+                importa: "Primer teatro a la italiana y primer cine de la historia de Ibiza, pieza clave del ensanche burgués decimonónico al pie de las murallas, recién devuelto a la vida cultural de la isla.",
+                mirar: "La sala en forma de herradura con sus galerías de palcos sostenidos por finas columnas de hierro fundido y el techo acústico restaurado.",
+                curiosidad: "Durante más de un siglo fue el corazón social donde convivieron compañías de ópera, proyecciones de cine mudo, bailes de carnaval y conciertos de jazz en vivo.",
+                superficie: "1.380 m² construidos",
+                sistema: "Muros perimetrales de carga de sillería de marès, estructura interior de pórticos y columnas de fundición y cerchas metálicas en cubierta.",
+                materiales: "Piedra de marès, mortero de cal, columnas de hierro fundido, maderas nobles fonoabsorbentes y aislamiento acústico multicapa.",
+                orientacion: "Fachada principal orientada al Norte hacia C/ Comte de Rosselló",
+                bioclimatica: "Envolvente térmica y acústica de alta densidad con sistema de renovación de aire y recuperación de calor de alta eficiencia.",
+                catalogacion: "Bien de Interés Cultural (BIC - Monumento).",
+                docGrafica: "Fotos: Archivo Teatro Pereyra | Planos de la rehabilitación de 2024 | Vídeo 'La materia habla': Sí (Hierro, madera y acústica).",
+                visita: "Sábado y Domingo (11:00, 12:00 y 13:00) | Aforo: 25 pax/turno | Duración: 40 min | Guiada (platea, palcos y escenario) | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas en planta baja y acceso a palcos mediante ascensor; aseos adaptados; bucle magnético.",
+                normas: "Fotos permitidas sin flash; prohibido tocar equipos técnicos de escenario; menores acompañados; sin mascotas.",
+                comoLlegar: "En pleno centro, a 40 m del Gran Hotel Montesol (#24) y a 2 min del Mercat Vell (#22) | Bus: Paradas en Av. Espanya | Ruta: 'La Marina Histórica'.",
+                relacionado: "Carrusel: '1899–2024: El gran telón vuelve a abrirse' | Mismo pilar: #24 Gran Hotel Montesol, #22 Mercat Vell, #16 Can Botino.",
+                img: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "05",
+                nombre: "Iglesia de Santa Eulària (Puig de Missa)",
+                pilar: "Sabiduría Vernácula",
+                municipio: "Santa Eulària des Riu",
+                direccion: "C/ del Puig de Missa, s/n, 07840 Santa Eulària des Riu",
+                coordenadas: "38°59'01.6\"N 1°31'45.8\"E",
+                titularidad: "Pública / Eclesiástica (Bisbat d'Eivissa / Ajuntament de Santa Eulària)",
+                arquitecto: "Maestros de obra locales e ingenieros militares del siglo XVI",
+                fechas: "Proyecto y nave fortificada: 1568 | Porxo (porche) y capillas laterales: s. XVII–XVIII",
+                reformas: "Restauración de cubiertas, torreón y pavimentación del entorno (2014)",
+                importa: "Es el conjunto monumental más representativo de las iglesias-fortaleza rurales de Ibiza, donde la fe religiosa y la defensa militar se fundieron en volúmenes blancos puros.",
+                mirar: "El bastión cilíndrico defensivo con matacanes adosado a la entrada, el gran *porxo* encalado con arcos rebajados y el conjunto de casas escalonadas que lo abraza.",
+                curiosidad: "El templo contaba con artillería propia en la cubierta abovedada para defender a los vecinos del valle cuando desembarcaban piratas berberiscos en el río.",
+                superficie: "1.120 m² (templo, porxo, bastión y patio)",
+                sistema: "Muros portantes de mampostería caliza de gran grosor con bóveda de cañón apuntado capaz de soportar el peso de cañones en la azotea.",
+                materiales: "Piedra caliza local, encalado integral con cal viva (*calç*), vigas de madera de sabina en el porche y pavimentos de piedra.",
+                orientacion: "Sur-Sureste dominando la colina sobre el río de Santa Eulària",
+                bioclimatica: "Reflexión del 85% de la radiación solar gracias al manto blanco de cal, porche previo de sombra y gruesos muros con gran inercia térmica.",
+                catalogacion: "Bien de Interés Cultural (BIC - Conjunto Histórico).",
+                docGrafica: "Fotos: Arxiu Municipal de Santa Eulària | Levantamiento arquitectónico del COAIB | Vídeo 'La materia habla': Sí (La cal como piel).",
+                visita: "Sábado y Domingo (10:00–13:30 y 16:30–19:00) | Aforo: 25 pax | Duración: 40 min | Guiada y libre | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Acceso rodado hasta la plaza superior; entrada al porxo y nave sin barreras arquitectónicas; aseos públicos adaptados.",
+                normas: "Fotos sin flash permitidas; silencio durante actos litúrgicos; menores acompañados; mascotas permitidas en las terrazas exteriores.",
+                comoLlegar: "Bus: Líneas L13, L16 y L24 (Parada centro Santa Eulària a 400 m) | Parking gratuito en la base del Puig | A 5 min en coche del Palacio de Congresos (#29).",
+                relacionado: "Reel: 'Arquitectura blanca para sobrevivir a los corsarios' | Mismo pilar: #10 Iglesia de Sant Agustí, #07 Torre de sa Sal Rossa, #11 Sa Punta des Molí.",
+                img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "06",
+                nombre: "Faro de Ses Coves Blanques (Sant Antoni)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Sant Antoni de Portmany",
+                direccion: "Passeig de ses Variades / C/ del Far, 07820 Sant Antoni de Portmany",
+                coordenadas: "38°58'36.4\"N 1°17'56.2\"E",
+                titularidad: "Pública (Ajuntament de Sant Antoni — Cesión Autoritat Portuària)",
+                arquitecto: "Emilio Pou y Bonet (Proyecto inicial) / Rehabilitación cultural: 2010",
+                fechas: "Inauguración: 15 de septiembre de 1897 | Desactivación marítima: 1963 | Centro cultural: 2010",
+                reformas: "Rehabilitación integral como Centro de Interpretación Marítima y Sala de Exposiciones (2010)",
+                importa: "Hito del patrimonio marítimo del siglo XIX en la costa oeste, reconvertido con éxito en un espacio cultural ciudadano abierto frente a la puesta de sol de Portmany.",
+                mirar: "El cuerpo simétrico de la antigua vivienda del farero articulado en torno al patio interior y el arranque octogonal de la antigua torre del faro mirando al mar.",
+                curiosidad: "En 1963 se desmontó su linterna superior porque los nuevos edificios turísticos de la costa tapaban su luz a los barcos, trasladando la señal al espigón.",
+                superficie: "340 m² construidos en planta baja + patio central",
+                sistema: "Muros de carga de mampostería caliza careada y sillería de marès en esquinales, recercados de ventanas y cornisas.",
+                materiales: "Piedra de marès vista, muros encalados con mortero de cal, carpintería de madera pintada y pavimentos hidráulicos y de piedra.",
+                orientacion: "Oeste-Suroeste frente a la boca de la bahía de Portmany",
+                bioclimatica: "Organización en claustro/patio central que protege del viento marino de poniente y garantiza ventilación cruzada en todas las salas.",
+                catalogacion: "Catálogo Municipal de Patrimonio Histórico de Sant Antoni de Portmany.",
+                docGrafica: "Fotos: Arxiu Històric de Sant Antoni | Planos de 1892 y proyecto de rehabilitación de 2010 | Vídeo 'La materia habla': No.",
+                visita: "Sábado y Domingo (10:30–14:00 y 17:30–20:30) | Aforo: 25 pax | Duración: 35 min | Guiada y libre | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas (planta única a cota de paseo marítimo sin escalones y aseos adaptados).",
+                normas: "Fotos permitidas; no tocar las maquetas navales ni obras expuestas; menores acompañados; mascotas en el paseo exterior.",
+                comoLlegar: "Bus: Líneas L03, L08 y L02 (Estación de Sant Antoni a 600 m) | Paseo marítimo peatonal | A 15 min por la costa de Sa Punta des Molí (#11).",
+                relacionado: "Carrusel: 'De guía de navegantes a faro cultural' | Mismo pilar: #09 Faro de Botafoc, #26 Estación Marítima, #11 Sa Punta des Molí.",
+                img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "07",
+                nombre: "Torre des Carregador / Sa Sal Rossa (Ses Salines)",
+                pilar: "Sabiduría Vernácula",
+                municipio: "Sant Josep de sa Talaia",
+                direccion: "Final de Platja d'en Bossa / Camí de sa Sal Rossa, 07817 Sant Josep",
+                coordenadas: "38°52'24.1\"N 1°24'14.9\"E",
+                titularidad: "Pública (Consell Insular d'Eivissa)",
+                arquitecto: "Joan Baptista Calvi (traza inicial) y maestros canteros de la Universitat d'Eivissa",
+                fechas: "Proyecto y obra: 1585 (Siglo XVI)",
+                reformas: "Restauración interior y apertura museográfica en 2008",
+                importa: "Es la más antigua y grande de las torres costeras de Ibiza, construida expresamente como refugio colectivo para proteger a los centenares de trabajadores que cargaban la sal en los barcos.",
+                mirar: "La imponente bóveda semiesférica interior de piedra de marès, el polvorín subterráneo excavado y el matacán que protegía la puerta elevada a cuatro metros de altura.",
+                curiosidad: "Su interior tenía capacidad para albergar hasta 150 personas a la vez en caso de desembarco enemigo en la playa.",
+                superficie: "180 m² en dos plantas abovedadas + terraza artillada",
+                sistema: "Torre troncocónica de gruesos muros de mampostería de piedra y cal (más de 2 metros en la base) con cúpula anular de sillería.",
+                materiales: "Piedra caliza local, sillares de marès tallados en arcos y bóvedas, y mortero de cal viva con árido marino lavado.",
+                orientacion: "Este-Sureste dominando la bahía de Platja d'en Bossa y el cargadero de sal",
+                bioclimatica: "Masa térmica extrema que mantiene el interior fresco y seco durante todo el año sin ninguna aportación energética.",
+                catalogacion: "Bien de Interés Cultural (BIC - Monumento) dentro del Parque Natural de Ses Salines.",
+                docGrafica: "Fotos: Consell d'Eivissa | Sección constructiva histórica y levantamiento 3D | Vídeo 'La materia habla': Sí (Las torres de la sal).",
+                visita: "Sábado y Domingo (10:00–14:00 y 16:30–19:30) | Aforo: 15 pax/turno | Duración: 35 min | Guiada (incluye acceso a azotea) | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "Entorno exterior accesible; entrada a la torre mediante escalera exterior y caracol interior de piedra (no accesible en silla de ruedas).",
+                normas: "Fotos permitidas; prohibido asomarse sobre los parapetos sin protección; calzado cerrado; menores acompañados; sin mascotas dentro.",
+                comoLlegar: "Bus: Línea L14 (Parada final Platja d'en Bossa a 500 m) | Parking gratuito junto a las casetas varadero de Sa Sal Rossa | Ruta: 'Arquitectura de la Sal'.",
+                relacionado: "Reel: 'El búnker del siglo XVI que protegía el oro blanco' | Mismo pilar: #01 Castillo, #08 Es Polvorí, #12 Baluarte de Sant Pere.",
+                img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "08",
+                nombre: "Es Polvorí (Baluarte de Santa Lucía, Dalt Vila)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "Baluard de Santa Llúcia, Ronda de Narcís Puget, Dalt Vila, 07800 Eivissa",
+                coordenadas: "38°54'23.8\"N 1°26'17.2\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa — Fundació Baleària)",
+                arquitecto: "Ingenieros militares de la Corona (Siglo XVIII)",
+                fechas: "Construcción: 1727–1730",
+                reformas: "Rehabilitación como sala de arte contemporáneo respetando la bóveda original",
+                importa: "Un ejemplo magistral de arquitectura militar ilustrada del siglo XVIII diseñada a prueba de bombas: el antiguo almacén de pólvora que hoy acoge exposiciones de arte contemporáneo.",
+                mirar: "La gruesa bóveda de cañón apuntado de sillería de marès, el muro perimetral de aislamiento contra la humedad y la gran explanada del baluarte sobre el puerto.",
+                curiosidad: "En el siglo XVII el antiguo polvorín del castillo explotó al caerle un rayo destruyendo media acrópolis; por eso este nuevo edificio se construyó aislado en el extremo oriental.",
+                superficie: "210 m² construidos + explanada del Baluarte de Santa Lucía",
+                sistema: "Nave única rectangular cubierta con bóveda de cañón reforzada de gran espesor y doble muro con cámara de ventilación perimetral.",
+                materiales: "Sillares de piedra de marès perfectamente escuadrados, mampostería caliza y mortero hidráulico de cal.",
+                orientacion: "Este-Noreste mirando a la boca del puerto y barrio de Sa Penya",
+                bioclimatica: "Cámara de aire histórica entre el muro exterior y la sala interior ideada en 1727 para mantener la pólvora seca y a temperatura constante.",
+                catalogacion: "Patrimonio Mundial UNESCO (1999) y Bien de Interés Cultural (BIC).",
+                docGrafica: "Fotos: Arxiu Històric d'Eivissa | Planta y sección transversal de la cámara de aire del s. XVIII | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:30–14:00 y 17:00–20:00) | Aforo: 20 pax | Duración: 30 min | Guiada y libre | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "Acceso sin escalones desde la plaza del Baluard de Santa Llúcia; interior diáfano en una sola cota practicable en silla de ruedas.",
+                normas: "Fotos sin flash permitidas; no tocar las obras de arte expuestas; menores acompañados; mascotas permitidas en la explanada exterior.",
+                comoLlegar: "Bus: Línea L45 (Parada MACE / Santa Llúcia a 60 m) | A 1 min a pie del MACE (#25) y de Casa Broner (#03) | Ruta: 'Dalt Vila Invisible'.",
+                relacionado: "Carrusel: 'Ingeniería antibombas de 1727 convertida en sala de arte' | Mismo pilar: #01 Castillo, #12 Baluarte de Sant Pere, #25 MACE.",
+                img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "09",
+                nombre: "Faro de Botafoc",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "Passeig Marítim Joan Carles I / Dique de Botafoc, 07800 Eivissa",
+                coordenadas: "38°54'15.0\"N 1°27'13.5\"E",
+                titularidad: "Pública (Autoritat Portuària de Balears)",
+                arquitecto: "Emilio Pou y Bonet (Ingeniero de Caminos, Canales y Puertos)",
+                fechas: "Proyecto: 1859 | Obra e inauguración: 30 de noviembre de 1861",
+                reformas: "Electrificación en 1918 y restauración de envolvente en 2016",
+                importa: "Centinela histórico de la entrada al puerto de Ibiza desde hace más de 165 años, una pieza de ingeniería neoclásica marítima que originalmente se alzaba sobre un islote separado de la costa.",
+                mirar: "La precisión geométrica de su torre blanca emergiendo del edificio de dos plantas, la escalera de caracol de fundición y la cúpula acristalada a 31 metros sobre el mar.",
+                curiosidad: "Su nombre ('Botafoc', que significa 'lanza fuego') proviene de las hogueras de alerta y señales que ya se encendían en esta roca desde la Edad Media.",
+                superficie: "480 m² en dos plantas + torre de 16 m de altura",
+                sistema: "Muros de carga de sillería caliza y marès con morteros hidráulicos resistentes al embate directo de las olas.",
+                materiales: "Sillería de piedra caliza y marès, mortero de cal hidráulica, hierro fundido, bronce y cristal óptico de Fresnel.",
+                orientacion: "Suroeste enfrentando la bocana del Puerto de Ibiza y Dalt Vila",
+                bioclimatica: "Muros masivos de 75 cm de espesor, patio interior resguardado del viento y carpinterías con contraventanas de lamas.",
+                catalogacion: "Catálogo de Patrimonio Histórico Portuario de Baleares.",
+                docGrafica: "Fotos: Autoritat Portuària de Balears | Planos originales firmados por Emilio Pou (1859) | Vídeo 'La materia habla': No.",
+                visita: "Sábado y Domingo (10:00–14:00) | Aforo: 10 pax/turno | Duración: 35 min | Guiada con reserva previa | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "Recinto exterior y planta baja accesibles; subida a la linterna solo por escalera de caracol estrecha.",
+                normas: "Fotos permitidas; prohibido tocar la óptica del faro; menores mayores de 8 años acompañados; sin mascotas.",
+                comoLlegar: "Bus: Línea L12B (Parada Marina Botafoc a 250 m) | Parking gratuito junto al faro | A 5 min del Edificio Las Boas (#15) y Estación Marítima (#26).",
+                relacionado: "Reel: 'El guardián del puerto desde 1861' | Mismo pilar: #06 Faro de Ses Coves Blanques, #26 Estación Marítima, #15 Las Boas.",
+                img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "10",
+                nombre: "Iglesia de Sant Agustí des Vedrà",
+                pilar: "Sabiduría Vernácula",
+                municipio: "Sant Josep de sa Talaia",
+                direccion: "Plaça de Sant Agustí, s/n, 07829 Sant Agustí des Vedrà",
+                coordenadas: "38°56'27.1\"N 1°17'38.6\"E",
+                titularidad: "Pública / Eclesiástica (Bisbat d'Eivissa)",
+                arquitecto: "Pedro Ferro (Maestro de obras proyectista) y obreros de la parroquia",
+                fechas: "Proyecto: 1791 | Inicio de obra: 1800 | Consagración: 1806",
+                reformas: "Conservación impecable de su estado original con encalados anuales",
+                importa: "Conjunto rural de una pureza cubista extraordinaria: la plasticidad de sus muros blancos escalonados sin ventanas y sus contrafuertes inclinados inspiró a pintores y arquitectos de todo el siglo XX.",
+                mirar: "El juego de sombras de la fachada lateral con sus volúmenes salientes de capillas, la espadaña de tres ojos y la integración con las casas payesas de la plaza.",
+                curiosidad: "Es la única iglesia de Ibiza orientada hacia el Noroeste en lugar de al Sur o al Este, porque dos familias rivales cedieron el terreno justo en la linde de sus fincas y exigieron que la puerta mirase a ambas.",
+                superficie: "590 m² construidos + plaza empedrada tradicional",
+                sistema: "Nave única con capillas laterales poco profundas entre contrafuertes y cubierta de bóveda de cañón rebajada.",
+                materiales: "Mampostería de piedra caliza local, mortero de tierra y cal, revoco continuo de cal viva (*calç*) y madera de sabina en dinteles.",
+                orientacion: "Noroeste (orientación única en la arquitectura sacra de la isla)",
+                bioclimatica: "Ausencia casi total de huecos al exterior para conservar el frescor interior y reflectancia solar total de la envolvente blanca.",
+                catalogacion: "Bien de Interés Cultural (BIC - Conjunto Histórico de Sant Agustí).",
+                docGrafica: "Fotos: Arxiu Històric / Consell d'Eivissa | Planta y alzados de la demarcación COAIB | Vídeo 'La materia habla': Sí (El volumen puro).",
+                visita: "Sábado y Domingo (10:00–13:30 y 17:00–19:30) | Aforo: 25 pax | Duración: 35 min | Guiada y libre | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "Plaza peatonal y acceso al interior de la nave totalmente llanos y practicables en silla de ruedas; aparcamiento a 50 m.",
+                normas: "Fotos permitidas sin flash; silencio en el interior; menores acompañados; mascotas permitidas en la plaza exterior.",
+                comoLlegar: "Bus: Línea L08 (Eivissa - Sant Josep - Sant Antoni, parada Sant Agustí a 150 m) | Parking gratuito junto al núcleo histórico | A 8 min de Sa Punta des Molí (#11).",
+                relacionado: "Carrusel: 'La iglesia nacida de un pacto entre dos familias' | Mismo pilar: #05 Puig de Missa, #11 Sa Punta des Molí, #03 Casa Broner.",
+                img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "11",
+                nombre: "Sa Punta des Molí (Sant Antoni)",
+                pilar: "Sabiduría Vernácula",
+                municipio: "Sant Antoni de Portmany",
+                direccion: "C/ dels Vells, s/n, Es Molí – Bahía de Portmany, 07820 Sant Antoni",
+                coordenadas: "38°58'16.2\"N 1°18'11.8\"E",
+                titularidad: "Pública (Ajuntament de Sant Antoni de Portmany)",
+                arquitecto: "Arquitectura popular e preindustrial (Molino de Buenaventura) / Rehabilitación municipal",
+                fechas: "Molino y almazara: Siglo XIX (c. 1818) | Rehabilitación cultural: 1999",
+                reformas: "Restauración de las aspas, caperuza giratoria y maquinaria de molienda",
+                importa: "Un oasis de arquitectura vernácula y preindustrial al borde mismo del mar que reúne en un solo recinto un molino de viento harinero, una almazara de aceite (*trull*), una noria de sangre (*sínia*) y una casa payesa.",
+                mirar: "El mecanismo interior de madera de encina y pino del molino de viento, el techo giratorio cónico y la gran prensa de viga del *trull*.",
+                curiosidad: "El molinero podía hacer girar toda la cubierta superior del molino ayudándose de un palo timón exterior (*ciri*) para orientar las velas según soplara el viento en la bahía.",
+                superficie: "2.800 m² de recinto cultural costero / 380 m² edificados",
+                sistema: "Torre cilíndrica de mampostería para el molino, muros portantes de piedra encalada y forjados planos de vigas de sabina en la casa y el trull.",
+                materiales: "Piedra caliza, cal viva, madera de sabina (*savina*), pino y encina en engranajes, posidonia seca en cubiertas y piedra de moler.",
+                orientacion: "Oeste-Noroeste abierto a todos los vientos de la bahía de Portmany",
+                bioclimatica: "Aprovechamiento directo de la energía eólica costera para la molienda, muros de gran inercia y pérgolas sombreadas frente al mar.",
+                catalogacion: "Bien Catalogado del Patrimonio Etnológico e Industrial de Sant Antoni.",
+                docGrafica: "Fotos: Ajuntament de Sant Antoni | Sección mecánica del molino harinero y del trull | Vídeo 'La materia habla': Sí (Ingenios de viento y madera).",
+                visita: "Sábado y Domingo (10:00–14:00 y 17:00–20:30) | Aforo: 25 pax | Duración: 45 min | Guiada con demostración de maquinaria | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Jardines, patio, anfiteatro, sala de exposiciones y trull 100% accesibles en silla de ruedas; interior de la torre del molino con escalera estrecha.",
+                normas: "Fotos permitidas; no tocar los engranajes del molino; menores acompañados; mascotas atadas permitidas en los jardines exteriores.",
+                comoLlegar: "Bus: Líneas L02 y L06 (Parada Es Molí / Passeig de la Mar a 100 m) | A 12 min a pie por el paseo marítimo desde el Faro de Ses Coves Blanques (#06).",
+                relacionado: "Reel: 'Cuando el viento de la bahía movía la isla' | Mismo pilar: #06 Faro de Ses Coves Blanques, #05 Puig de Missa, #10 Sant Agustí.",
+                img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "12",
+                nombre: "Baluarte de Sant Pere (Dalt Vila)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "Portal Nou / Plaça del Sol, Dalt Vila, 07800 Eivissa",
+                coordenadas: "38°54'24.2\"N 1°26'01.5\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa)",
+                arquitecto: "Giovanni Battista Calvi (traza de 1555) y ampliación de Jacobo Fratin (1575)",
+                fechas: "Proyecto: 1555 | Obra: 1555–1585",
+                reformas: "Musealización de casamatas y apertura del túnel del Portal Nou",
+                importa: "Conocido históricamente como el 'Baluarte del Portal Nou', es una pieza clave de la fortificación renacentista que defendía el frente oeste y la vaguada de acceso a la ciudad.",
+                mirar: "Las espectaculares casamatas abovedadas interiores donde se emplazaban los cañones para barrer los fosos y el túnel en recodo del Portal Nou.",
+                curiosidad: "En su interior se aprecia exactamente la junta constructiva donde el ingeniero Jacobo Fratin amplió el baluarte original de Calvi envolviéndolo como una muñeca rusa.",
+                superficie: "3.400 m² de plataforma superior y casamatas bajas",
+                sistema: "Muros de sillería en talud rellenos de tierra apisonada para absorber el impacto de los proyectiles y bóvedas de cañón de sillería.",
+                materiales: "Sillares de piedra arenisca de marès, mampostería caliza y mortero de cal y puzolana.",
+                orientacion: "Oeste-Noroeste dominando el barrio de Puig des Molins y Reina Sofia",
+                bioclimatica: "Cámaras subterráneas con temperatura constante de 19 ºC en verano y chimeneas de evacuación de humos de pólvora que actúan como torres de viento.",
+                catalogacion: "Patrimonio de la Humanidad UNESCO (1999) y Bien de Interés Cultural (BIC).",
+                docGrafica: "Fotos: Arxiu Històric d'Eivissa | Planta y sección mostrando las dos fases de Calvi y Fratin | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:00–14:00 y 17:00–20:00) | Aforo: 25 pax | Duración: 40 min | Guiada por las casamatas interiores | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Acceso por rampa del Portal Nou; interior de casamatas con pavimento continuo practicable y audiovisual accesible.",
+                normas: "Fotos permitidas; menores acompañados; mascotas permitidas en la explanada superior del baluarte.",
+                comoLlegar: "Bus: Líneas L03, L10 y L45 (Parada Reina Sofia / Parc de la Pau a 200 m) | A 4 min a pie de Puig des Molins (#13) y de Can Ventosa (#19).",
+                relacionado: "Carrusel: 'El baluarte que esconde otro baluarte dentro' | Mismo pilar: #01 Castillo y Almudaina, #08 Es Polvorí, #16 Can Botino.",
+                img: "https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "13",
+                nombre: "Necrópolis y Museo de Puig des Molins",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "Via Romana, 31, 07800 Eivissa",
+                coordenadas: "38°54'25.9\"N 1°25'46.2\"E",
+                titularidad: "Pública (Ministerio de Cultura — MAEF)",
+                arquitecto: "Hipogeos fenicio-púnicos (s. VII a.C.) | Edificio Museo: Gregorio Valero y reforma moderna",
+                fechas: "Hipogeos: s. VII–I a.C. | Edificio Museo: 1965 | Reforma integral: 2006–2012",
+                reformas: "Adecuación lumínica y ambiental de los hipogeos visitables (2019)",
+                importa: "La mayor y mejor conservada necrópolis fenicio-púnica del Mediterráneo, una auténtica 'ciudad subterránea' con más de 3.000 hipogeos tallados en la roca caliza al pie de Dalt Vila.",
+                mirar: "El descenso por las escaleras modernas hacia el corazón de los hipogeos de los 'Muleto', donde se observa la arquitectura excavada y los sarcófagos de piedra.",
+                curiosidad: "Los fenicios perforaban pozos rectangulares verticales y, abajo, excavaban cámaras horizontales formando un laberinto subterráneo bajo los olivos y almendros.",
+                superficie: "50.000 m² de yacimiento arqueológico / 1.650 m² del edificio museo",
+                sistema: "Arquitectura sustractiva tallada directamente en el estrato geológico calcáreo (hipogeos) y edificio museístico de hormigón armado.",
+                materiales: "Roca caliza madre tallada a cincel, sillares de marès en sarcófagos, muros de piedra seca en bancales y hormigón blanco en el museo.",
+                orientacion: "Ladera orientada al Norte-Noreste mirando a la ciudad",
+                bioclimatica: "Inercia geotérmica natural en las cámaras hipogeas y control higrométrico en las salas del museo.",
+                catalogacion: "Patrimonio de la Humanidad UNESCO (1999) y Bien de Interés Cultural (Zona Arqueológica).",
+                docGrafica: "Fotos: MAEF | Planimetría y secciones de las cámaras subterráneas | Vídeo 'La materia habla': Sí (Tallar el vacío).",
+                visita: "Sábado y Domingo (10:00–14:00 y 17:00–19:30) | Aforo: 20 pax (10 pax por turno en hipogeo) | Duración: 45 min | Guiada | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Salas del museo 100% accesibles en silla de ruedas con ascensor y baños adaptados; bajada al hipogeo subterráneo por escalera; piezas táctiles.",
+                normas: "Fotos sin flash; prohibido tocar las paredes de roca de los hipogeos; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Líneas L03, L08 y L10 (Parada Via Romana a 100 m) | A 3 min a pie de Can Ventosa (#19) y del Consell Insular (#17).",
+                relacionado: "Reel: '3.000 cámaras secretas bajo los olivos de Ibiza' | Mismo pilar: #01 Castillo, #12 Baluarte de Sant Pere, #25 MACE.",
+                img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "14",
+                nombre: "Conjunto Racionalista Can Pep Simó (Legado de Josep Lluís Sert)",
+                pilar: "El Legado Racionalista",
+                municipio: "Santa Eulària des Riu",
+                direccion: "Urbanización Can Pep Simó, C/ Josep Lluís Sert, Jesús, 07819",
+                coordenadas: "38°55'18.9\"N 1°27'49.3\"E",
+                titularidad: "Privada (Bien de Interés Cultural con apertura concertada OHI)",
+                arquitecto: "Josep Lluís Sert (Decano de Harvard y cofundador del GATCPAC)",
+                fechas: "Proyecto: 1964 | Obra: 1966–1973",
+                reformas: "Conservación integral bajo protección patrimonial BIC",
+                importa: "Destacado expresamente en el dossier de Open House Ibiza: el conjunto residencial donde Josep Lluís Sert fusionó las bóvedas mediterráneas y los cubos payeses con el Movimiento Moderno internacional.",
+                mirar: "El conjunto de viviendas 'Els Fumerals', las chimeneas troncocónicas, los lucernarios abovedados y la adaptación escalonada a los bancales de piedra.",
+                curiosidad: "Sert diseñó las casas para que ninguna tapara las vistas hacia Dalt Vila de su vecina y prohibió los vallados altos para no fragmentar el bosque.",
+                superficie: "Conjunto residencial en ladera / Vivienda visitable: 260 m²",
+                sistema: "Muros de carga de fábrica encalada y mampostería de piedra local combinados con bóvedas tabicadas y losas de hormigón armado.",
+                materiales: "Piedra caliza en bancales, revoco rugoso de cal blanca, hormigón visto en gárgolas y carpinterías con toques de colores primarios (Le Corbusier / Sert).",
+                orientacion: "Sur-Suroeste mirando a la bahía de Talamanca y Dalt Vila",
+                bioclimatica: "Doble cubierta ventilada en las bóvedas para disipar el calor de agosto, patios cortavientos y celosías profundas.",
+                catalogacion: "Bien de Interés Cultural (BIC - Conjunto Histórico, 2009) y Registro DOCOMOMO Ibérico.",
+                docGrafica: "Fotos: Archivo Sert / COAIB | Planos y secciones originales | Vídeo 'La materia habla': Sí (Cuando Ibiza cambió el diseño mundial).",
+                visita: "Sábado y Domingo (10:30 y 12:00) | Aforo: 15 pax/turno | Duración: 50 min | Guiada con reserva previa | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Recorrido en pendiente y acceso a las viviendas mediante escaleras exteriores; no accesible en silla de ruedas.",
+                normas: "Fotos permitidas en el recorrido exterior y salón autorizado; menores mayores de 10 años acompañados; sin mascotas.",
+                comoLlegar: "Bus: Línea L12B (Parada Cap Martinet / Talamanca) | A 5 min en coche del Centro Cultural de Jesús (#28) y del Edificio Las Boas (#15).",
+                relacionado: "Carrusel: 'El laboratorio de Sert en Ibiza' | Mismo pilar: #03 Casa Broner, #15 Edificio Las Boas, #24 Gran Hotel Montesol.",
+                img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "15",
+                nombre: "Edificio Las Boas (Marina Botafoch)",
+                pilar: "Arquitectura Contemporánea",
+                municipio: "Eivissa",
+                direccion: "Passeig Marítim Joan Carles I, 19, Marina Botafoch, 07800 Eivissa",
+                coordenadas: "38°54'52.4\"N 1°26'43.1\"E",
+                titularidad: "Privada (Comunidad de Propietarios — Acceso concertado a patio y terrazas comunes)",
+                arquitecto: "Jean Nouvel (Ateliers Jean Nouvel — Premio Pritzker de Arquitectura)",
+                fechas: "Proyecto: 2007 | Obra e inauguración: 2009–2013",
+                reformas: "Mantenimiento continuo de los balcones vegetales y lámina de agua",
+                importa: "Obra en Ibiza del arquitecto francés ganador del Premio Pritzker Jean Nouvel, un edificio residencial icónico que reinterpreta el teatro frente al mar y la relación entre arquitectura y color.",
+                mirar: "La gran fachada curva escalonada como un anfiteatro abierto hacia Dalt Vila y la sucesión de balcones-bandeja de acero y vidrio teñidos en degradados de colores vivos.",
+                curiosidad: "El color de cada balcón determina el tipo de flores y plantas trepadoras (buganvillas rojas, naranjas, violetas y amarillas) que se plantaron en sus jardineras perimetrales.",
+                superficie: "21.500 m² construidos en 7 plantas escalonadas + gran patio-laguna central",
+                sistema: "Estructura de hormigón armado con grandes voladizos postensados y bandejas perimetrales metálicas en voladizo para los balcones.",
+                materiales: "Hormigón armado, acero inoxidable y aluminio lacado policromado, vidrio laminado serigrafiado, lamas de control solar y vegetación integrada.",
+                orientacion: "Suroeste abriéndose en herradura hacia el puerto y la silueta de Dalt Vila",
+                bioclimatica: "Grandes voladizos de balcones que sombrean los paños acristalados inferiores, microclima evaporativo generado por la gran piscina-laguna central y ventilación pasante.",
+                catalogacion: "Obra de Autor Internacional (Premio Pritzker Jean Nouvel).",
+                docGrafica: "Fotos: Ateliers Jean Nouvel (con créditos) | Planta en abanico y sección hacia la bahía | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (11:00 y 12:30) | Aforo: 20 pax/turno | Duración: 40 min | Visita guiada por el atrio, patio central y pasarelas | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas en todo el recorrido de planta baja, jardines acuáticos y ascensores panorámicos.",
+                normas: "Fotos permitidas en el patio central sin fotografiar el interior de viviendas privadas; silencio; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Línea L12B (Parada Ronda Sumaires / Las Boas en la puerta) | A 5 min a pie de la Estación Marítima (#26) y del Faro de Botafoc (#09).",
+                relacionado: "Reel: 'El anfiteatro de colores de Jean Nouvel frente a Dalt Vila' | Mismo pilar: #25 MACE, #29 Palacio de Congresos, #27 Hospital Can Misses.",
+                img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "16",
+                nombre: "Ayuntamiento de Ibiza / Can Botino (Dalt Vila)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "Plaça d'Espanya, 1, Dalt Vila, 07800 Eivissa",
+                coordenadas: "38°54'25.2\"N 1°26'12.5\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa)",
+                arquitecto: "Pere Santiyan y maestros conventuales (Convento s. XVI–XVII) / Reforma civil s. XIX",
+                fechas: "Convento dominico: 1592–s. XVII | Casa señorial Can Botino: s. XIX | Ayuntamiento: 1838",
+                reformas: "Rehabilitación de claustro, Salón de Plenos y mirador de Plaça d'Espanya",
+                importa: "Sede institucional de la ciudad que une el antiguo Convento de Santo Domingo —con su claustro renacentista— y el palacete burgués de Can Botino, abriendo despachos habitualmente invisibles al ciudadano.",
+                mirar: "Las galerías arqueadas del claustro conventual encalado, la escalera noble de Can Botino, el Salón de Plenos histórico y la vista sobre el puerto desde el mirador.",
+                curiosidad: "Tras la desamortización de Mendizábal en 1835, los frailes dominicos tuvieron que abandonar el convento y el edificio pasó a manos de los ciudadanos como Casa Consistorial.",
+                superficie: "2.450 m² (Claustro, dependencias municipales y Can Botino)",
+                sistema: "Muros portantes de mampostería y sillería de marès con galerías claustrales de arcos de medio punto y bóvedas de arista.",
+                materiales: "Piedra de marès, mampostería caliza encalada, carpinterías nobles de madera, forja histórica y pavimentos hidráulicos y de piedra.",
+                orientacion: "Norte-Este sobre el adarve de la muralla mirando al puerto",
+                bioclimatica: "Claustro central ajardinado que funciona como regulador térmico y pozo de luz y aire fresco para todas las oficinas municipales.",
+                catalogacion: "Patrimonio Mundial UNESCO (1999) y Bien de Interés Cultural (BIC).",
+                docGrafica: "Fotos: Arxiu Històric d'Eivissa | Planos históricos de la evolución convento-ayuntamiento | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:00–14:00) | Aforo: 25 pax | Duración: 40 min | Guiada (incluye Alcaldía, Sala Capitular y Claustro) | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Claustro y planta baja 100% accesibles desde Plaça d'Espanya; ascensor interior a planta noble; aseos adaptados.",
+                normas: "Fotos permitidas; menores acompañados; sin mascotas en el interior de las salas nobles.",
+                comoLlegar: "Bus: Línea L45 (Parada Plaça d'Espanya / Ayuntamiento en la puerta) | A 2 min del MACE (#25) y del Portal de ses Taules | Ruta: 'Instituciones Abiertas'.",
+                relacionado: "Carrusel: 'Del silencio de los monjes a la casa de todos los ciudadanos' | Mismo pilar: #18 Antigua Curia, #17 Consell Insular, #02 Catedral.",
+                img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "17",
+                nombre: "Consell Insular d'Eivissa (Avinguda d'Espanya)",
+                pilar: "Arquitectura Social",
+                municipio: "Eivissa",
+                direccion: "Avinguda d'Espanya, 49, 07800 Eivissa",
+                coordenadas: "38°54'31.2\"N 1°25'38.6\"E",
+                titularidad: "Pública (Consell Insular d'Eivissa)",
+                arquitecto: "Concurso Público de Arquitectura Institucional Insular",
+                fechas: "Proyecto y obra de sede moderna y ampliación: años 1990 – reforma 2018",
+                reformas: "Modernización energética de fachada, Sala de Plenos y atrio ciudadano",
+                importa: "Máxima institución de autogobierno de la isla de Ibiza: su apertura en Open House acerca la arquitectura administrativa contemporánea a los residentes, abriendo la Sala de Plenos y Presidencia.",
+                mirar: "El gran vestíbulo acristalado de atención ciudadana, la fachada protegida por lamas horizontales de control solar y la geometría de su Sala de Plenos institucional.",
+                curiosidad: "En sus plantas se custodian y gestionan las competencias de Patrimonio Histórico, Territorio y Cultura que velan por el sello UNESCO de toda la isla.",
+                superficie: "6.800 m² construidos en planta baja, entreplanta y 5 alturas",
+                sistema: "Estructura porticada reticular de hormigón armado y acero con muro cortina protegido por brise-soleil exterior.",
+                materiales: "Hormigón visto, piedra natural aplacada en basamento, vidrio de baja emisividad, lamas de aluminio anodizado y maderas acústicas.",
+                orientacion: "Fachada principal orientada al Norte-Noroeste hacia Avinguda d'Espanya",
+                bioclimatica: "Doble piel de protección solar mediante celosías horizontales metálicas, iluminación LED biodinámica y climatización centralizada de alta eficiencia.",
+                catalogacion: "Sede Institucional del Gobierno Insular de Ibiza.",
+                docGrafica: "Fotos: Consell Insular d'Eivissa | Planos de distribución institucional | Vídeo 'La materia habla': No.",
+                visita: "Sábado (10:00–14:00) | Aforo: 25 pax/turno | Duración: 40 min | Visita guiada institucional (Sala de Plenos y Presidencia) | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas (acceso a cota cero, ascensores adaptados en Braille, bucle magnético en Sala de Plenos y baños PMR).",
+                normas: "Fotos permitidas en Sala de Plenos y vestíbulo; acceso con DNI para zonas de Presidencia; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Líneas L03, L08, L10 y L14 (Parada Consell Insular en la misma puerta) | A 2 min a pie de Can Ventosa (#19) y de Puig des Molins (#13).",
+                relacionado: "Reel: 'Por dentro del gobierno de la isla' | Mismo pilar: #16 Ayuntamiento Can Botino, #19 Can Ventosa, #20 Seguridad Social.",
+                img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "18",
+                nombre: "Edificio de la Antigua Curia y Casa de la Curia (Dalt Vila)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "Plaça de la Catedral, 4, Dalt Vila, 07800 Eivissa",
+                coordenadas: "38°54'20.8\"N 1°26'11.2\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa / Centro de Interpretación Madina Yabisa)",
+                arquitecto: "Maestros góticos de la Corona de Aragón (Siglo XV)",
+                fechas: "Construcción: Siglo XV (c. 1400–1500)",
+                reformas: "Rehabilitación museográfica respetando arcos góticos y muralla árabe interior",
+                importa: "Antiguo tribunal de justicia real y sede de la Universitat medieval de Ibiza, un edificio gótico civil encastrado directamente sobre las torres de la muralla árabe de Madina Yabisa.",
+                mirar: "El portal gótico adovelado de piedra de marès, las ventanas geminadas (ajimeces) y los restos visibles de la muralla musulmana del siglo XI en su interior.",
+                curiosidad: "Bajo su techo se impartió justicia en la isla durante siglos y aún conserva grabados e inscripciones históricas en sus sillares de piedra.",
+                superficie: "390 m² construidos en tres niveles históricos",
+                sistema: "Muros portantes de sillería de marès y mampostería adosados al lienzo de tapial y piedra de la fortificación islámica.",
+                materiales: "Piedra arenisca de marès tallada en arcos y ventanales góticos, mampostería caliza, cal aérea y viguería de madera.",
+                orientacion: "Fachada principal al Sur hacia la Plaça de la Catedral y trasera sobre el acantilado Norte",
+                bioclimatica: "Aprovechamiento de la muralla histórica como gran acumulador térmico y ventilación natural cruzada entre la plaza y el cortado norte.",
+                catalogacion: "Patrimonio Mundial UNESCO (1999) y Bien de Interés Cultural (BIC - Monumento).",
+                docGrafica: "Fotos: Madina Yabisa / Ajuntament d'Eivissa | Secciones mostrando la muralla islámica integrada | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:00–14:00 y 16:30–19:30) | Aforo: 20 pax | Duración: 35 min | Guiada y libre | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "Planta de acceso practicable desde la Plaça de la Catedral; maquetas táctiles y audiovisuales subtitulados.",
+                normas: "Fotos sin flash permitidas; no apoyarse en los restos arqueológicos de la muralla árabe; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Línea L45 (Parada Plaça de la Catedral a 10 m) | Justo enfrente de la Catedral (#02) y junto al Castillo (#01) | Ruta: 'Acrópolis UNESCO'.",
+                relacionado: "Carrusel: 'El tribunal gótico que abraza la muralla árabe' | Mismo pilar: #01 Castillo y Almudaina, #02 Catedral, #16 Can Botino.",
+                img: "https://images.unsplash.com/photo-1548625361-1882cf0f4222?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "19",
+                nombre: "Biblioteca Municipal y Espacio Cultural de Can Ventosa (Eivissa)",
+                pilar: "Arquitectura Social",
+                municipio: "Eivissa",
+                direccion: "Avinguda d'Ignasi Wallis, 26, 07800 Eivissa",
+                coordenadas: "38°54'34.8\"N 1°25'45.1\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa)",
+                arquitecto: "Arquitectura industrial de principios del s. XX (1925) / Rehabilitación cultural: 1995",
+                fechas: "Fábrica textil original: 1925 | Rehabilitación como Biblioteca y Teatro: 1995",
+                reformas: "Modernización de salas de lectura, archivo y caja escénica (2019)",
+                importa: "El ejemplo más querido de reconversión de patrimonio industrial en Ibiza: la antigua fábrica de géneros de punto y calcetería 'Can Ventosa' transformada en la gran biblioteca pública y auditorio de la ciudad.",
+                mirar: "La fachada de ladrillo y grandes ventanales industriales del siglo XX, las amplias naves diáfanas de lectura inundadas de luz natural y el patio central ciudadano.",
+                curiosidad: "En los años 20 y 30 esta fábrica fue pionera en el empleo femenino en la isla, donde decenas de mujeres trabajaban con telares mecánicos antes de la llegada del turismo.",
+                superficie: "3.600 m² construidos (Biblioteca Municipal, Auditorio de 300 butacas y patio)",
+                sistema: "Muros perimetrales de fábrica industrial de gran altura combinados con estructura metálica y de hormigón para salvar grandes luces sin pilares.",
+                materiales: "Fábrica cerámica vista y revocada, perfilería metálica de gran formato, madera acústica en el teatro y pavimentos de terrazo y piedra.",
+                orientacion: "Cuatro fachadas en manzana exenta con acceso principal al Este (Av. Ignasi Wallis)",
+                bioclimatica: "Grandes ventanales industriales de orientación norte y este que proporcionan luz natural homogénea para la lectura sin deslumbramiento.",
+                catalogacion: "Catálogo Municipal de Patrimonio Arquitectónico e Industrial de Eivissa.",
+                docGrafica: "Fotos: Arxiu Històric d'Eivissa (fotos de los telares en 1928 vs actualidad) | Planos de reconversión | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:00–13:30) | Aforo: 25 pax | Duración: 40 min | Guiada (fondos antiguos de biblioteca y backstage del auditorio) | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas (rampas en patio, ascensor a salas de estudio, aseos adaptados y bucle magnético en auditorio).",
+                normas: "Fotos permitidas; silencio absoluto en las salas de lectura activas; menores acompañados; mascotas permitidas en el patio exterior.",
+                comoLlegar: "Bus: Líneas L03, L08, L10 y L13 (Parada Ignasi Wallis / Can Ventosa en la puerta) | A 2 min del Consell Insular (#17) y Mercat Nou (#23).",
+                relacionado: "Reel: 'De fábrica de medias en 1925 a templo de los libros y el teatro' | Mismo pilar: #17 Consell Insular, #23 Mercat Nou, #30 Conservatorio.",
+                img: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "20",
+                nombre: "Oficina de la Seguridad Social e INSS (Eivissa)",
+                pilar: "Arquitectura Contemporánea",
+                municipio: "Eivissa",
+                direccion: "C/ de la Mare de Déu de les Neus / Av. de Pere Matutes Noguera, 07800 Eivissa",
+                coordenadas: "38°54'16.5\"N 1°25'19.8\"E",
+                titularidad: "Pública (Tesorería General de la Seguridad Social / INSS — Ministerio)",
+                arquitecto: "Concurso Público de Arquitectura del Estado (Arquitectura institucional contemporánea)",
+                fechas: "Proyecto y obra reciente: Siglo XXI",
+                reformas: "Obra institucional de alta eficiencia energética",
+                importa: "Representa exactamente el bloque prismático blanco con esquina curva y ventanas abocinadas que ilustra la portada de 'Arquitectura Contemporánea' en la página 4 del dossier de Open House Ibiza.",
+                mirar: "Su rotunda envolvente blanca con la esquina redondeada y la matriz rítmica de huecos profundos abocinados que protegen las oficinas del sol mediterráneo.",
+                curiosidad: "Sus ventanas rehundidas en ángulo no son un capricho estético: reinterpretan en clave contemporánea los gruesos muros abocinados de las casas payesas para dar sombra sin persianas.",
+                superficie: "3.200 m² construidos en planta baja y 4 plantas de oficinas",
+                sistema: "Estructura de hormigón armado con fachada autoportante de doble hoja y profundo abocinamiento geométrico en cada hueco.",
+                materiales: "Revestimiento continuo mineral blanco de alta reflectancia, vidrio de control solar con cámara de argón, aluminio lacado blanco y piedra natural en planta baja.",
+                orientacion: "Esquina principal orientada al Sur-Sureste",
+                bioclimatica: "Autosombreamiento pasivo de las ventanas gracias a los abocinamientos tridimensionales de fachada, reduciendo un 45% la carga térmica solar en verano.",
+                catalogacion: "Arquitectura Pública Estatal Seleccionada en Revistas Especializadas de Arquitectura.",
+                docGrafica: "Fotos: Dossier Open House Ibiza (pág. 4) | Plantas y detalle constructivo de los huecos abocinados | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado (10:30, 11:30 y 12:30) | Aforo: 20 pax | Duración: 35 min | Visita guiada arquitectónica (edificio sin atención administrativa en sábado) | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas (acceso a nivel de acera, mostradores de doble altura, ascensores adaptados y baños PMR).",
+                normas: "Fotos permitidas de la fachada y del atrio principal; prohibido acceder a zonas de servidores informáticos; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Línea L14 (Parada Av. Pere Matutes / Es Viver a 120 m) | A 8 min a pie de la Agencia Tributaria (#21) | Ruta: 'Nueva Arquitectura Pública'.",
+                relacionado: "Carrusel: 'El edificio de la página 4 del dossier explicado al detalle' | Mismo pilar: #21 Agencia Tributaria, #27 Hospital Can Misses, #30 Conservatorio.",
+                img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "21",
+                nombre: "Agencia Tributaria de Ibiza (AEAT)",
+                pilar: "Arquitectura Contemporánea",
+                municipio: "Eivissa",
+                direccion: "C/ de Bartomeu Rosselló, 21 / Av. Ignasi Wallis, 07800 Eivissa",
+                coordenadas: "38°54'39.2\"N 1°25'51.4\"E",
+                titularidad: "Pública (Agencia Estatal de Administración Tributaria — Ministerio de Hacienda)",
+                arquitecto: "Arquitectura administrativa estatal (Proyectistas de Patrimonio del Estado)",
+                fechas: "Construcción de la sede actual y remodelación de envolvente: finales s. XX – s. XXI",
+                reformas: "Actualización de instalaciones térmicas, iluminación eficiente y accesibilidad universal",
+                importa: "Muestra el papel de la arquitectura civil del Estado en la consolidación del centro urbano moderno de Eivissa, transformando espacios burocráticos en edificios luminosos y ordenados.",
+                mirar: "La composición racionalista de su fachada urbana, el orden modular de su estructura de plantas libres y el patio interior de iluminación natural.",
+                curiosidad: "Abrir este tipo de sedes durante Open House permite al ciudadano recorrer desde una perspectiva puramente arquitectónica y amable edificios asociados habitualmente a trámites.",
+                superficie: "2.900 m² construidos",
+                sistema: "Estructura reticular de hormigón armado con forjados planos que permiten plantas de oficinas flexibles y diáfanas.",
+                materiales: "Piedra natural aplacada en fachada, carpinterías de aluminio con rotura de puente térmico, vidrio laminado acústico y suelos técnicos elevados.",
+                orientacion: "Este-Oeste en trama urbana consolidada del ensanche",
+                bioclimatica: "Aislamiento acústico de alta prestación frente al tráfico urbano, vidrios de control solar y climatización sectorizada por plantas.",
+                catalogacion: "Equipamiento Público de la Administración General del Estado.",
+                docGrafica: "Fotos: Archivo AEAT / COAIB | Plantas tipo de distribución modular | Vídeo 'La materia habla': No.",
+                visita: "Sábado (10:30 y 11:30) | Aforo: 20 pax | Duración: 35 min | Visita guiada arquitectónica al vestíbulo y plantas tipo | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas (rampa de entrada, puertas automáticas, ascensores y aseos adaptados).",
+                normas: "Fotos permitidas exclusivamente en el exterior y vestíbulo principal; acceso con DNI; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Líneas L03, L08, L10, L12 y L13 (Parada Bartomeu Rosselló a 50 m) | A 2 min a pie del Mercat Nou (#23) y de Can Ventosa (#19).",
+                relacionado: "Reel: 'Arquitectura de Estado en el corazón del ensanche' | Mismo pilar: #20 Seguridad Social, #17 Consell Insular, #27 Hospital Can Misses.",
+                img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "22",
+                nombre: "Mercat Vell (Plaza de la Constitución)",
+                pilar: "Patrimonio Histórico",
+                municipio: "Eivissa",
+                direccion: "Plaça de la Constitució, s/n, La Marina, 07800 Eivissa",
+                coordenadas: "38°54'27.8\"N 1°26'09.1\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa)",
+                arquitecto: "Alfredo씩 Acevedo (Proyectista de 1872)",
+                fechas: "Proyecto e inauguración: 1872",
+                reformas: "Restauración de columnas, cubierta y entablamento neoclásico (2015)",
+                importa: "Joya de la arquitectura civil decimonónica de Ibiza: un templete neoclásico abierto inspirado en los mercados griegos y romanos, situado exactamente frente a la rampa del Portal de ses Taules.",
+                mirar: "El pórtico de columnas toscanas blancas que sostienen el entablamento clásico, la planta basilical abierta al aire y su diálogo directo con las murallas renacentistas.",
+                curiosidad: "Fue diseñado en 1872 sin muros cerrados para que la brisa del puerto circulara libremente entre los puestos de verdura y fruta de las payesas.",
+                superficie: "215 m² en planta baja porticada",
+                sistema: "Pórtico perimetral de columnas clásicas de piedra y mampostería encalada que soportan una cubierta de armadura de madera y teja árabe.",
+                materiales: "Piedra de marès estucada y encalada en columnas y capiteles, estructura de madera en cubierta, teja curva tradicional y pavimento de piedra.",
+                orientacion: "Eje Norte-Sur frente al Portal de ses Taules de Dalt Vila",
+                bioclimatica: "Arquitectura umbráculo 100% pasiva: sombra permanente bajo cubierta ventilada y circulación continua de la brisa marina por sus cuatro costados abiertos.",
+                catalogacion: "Bien de Interés Cultural (BIC - Conjunto Histórico de La Marina) y entorno Patrimonio Mundial UNESCO.",
+                docGrafica: "Fotos: Arxiu Històric d'Eivissa (postales del s. XIX y estado actual) | Alzado y planta de 1872 | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:00–14:00 y 17:00–20:00) | Aforo: Libre (explicaciones de 20 min cada hora en punto) | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "Entorno peatonal de la Plaça de la Constitució; acceso al interior con dos escalones salvables; explicación exterior 100% accesible.",
+                normas: "Fotos totalmente permitidas; respeto a los vendedores locales de producto kilómetro cero; mascotas atadas permitidas en la plaza.",
+                comoLlegar: "En el barrio peatonal de La Marina | A 30 metros del Portal de ses Taules (#01) y a 2 min del Teatro Pereyra (#04) y Hotel Montesol (#24).",
+                relacionado: "Carrusel: 'El templo griego de las verduras payesas desde 1872' | Mismo pilar: #23 Mercat Nou, #04 Teatro Pereyra, #24 Gran Hotel Montesol.",
+                img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "23",
+                nombre: "Mercat Nou (Eivissa)",
+                pilar: "Arquitectura Social",
+                municipio: "Eivissa",
+                direccion: "C/ de Canàries / C/ de Extremadura, Ensanche de Eivissa, 07800 Eivissa",
+                coordenadas: "38°54'36.1\"N 1°25'39.4\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa)",
+                arquitecto: "Arquitectura municipal de mercados de abastos del siglo XX",
+                fechas: "Construcción: Segunda mitad del siglo XX (Años 1970)",
+                reformas: "Modernización de puestos, cámaras frigoríficas e iluminación cenital",
+                importa: "El gran mercado de abastos del ensanche moderno de Eivissa, un equipamiento público funcionalista pensado para articular la vida cotidiana de los residentes y conectar el campo y el mar con la ciudad.",
+                mirar: "La gran cubierta de luces amplias sobre el patio central de puestos, la organización funcional por gremios (pescadería, carnicería y huerta local) y la entrada de luz alta.",
+                curiosidad: "Mientras el Mercat Vell se quedó pequeño para una ciudad en expansión en los años 70, el Mercat Nou nació como el corazón gastronómico y social de los nuevos barrios trabajadores.",
+                superficie: "2.400 m² de nave comercial y cámaras en planta baja y sótano",
+                sistema: "Estructura de pórticos de hormigón armado de gran luz y cubierta ligera con lucernarios perimetrales de ventilación e iluminación.",
+                materiales: "Hormigón armado, terrazo continuo de alta resistencia al desgaste, revestimientos cerámicos higiénicos, acero inoxidable y carpinterías de aluminio.",
+                orientacion: "Manzana completa con accesos a los cuatro puntos cardinales",
+                bioclimatica: "Gran altura libre interior que permite que el aire caliente ascienda hacia las rejillas superiores, manteniendo frescos los puestos inferiores.",
+                catalogacion: "Equipamiento Público Municipal de Abastos.",
+                docGrafica: "Fotos: Ajuntament d'Eivissa | Planta general del mercado y sección de cubierta | Vídeo 'La materia habla': No.",
+                visita: "Sábado (09:30–13:30, en plena actividad de mercado) | Aforo: 20 pax/turno | Duración: 35 min | Ruta guiada arquitectónica y social | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas por sus entradas a cota cero; pasillos amplios y aseos adaptados.",
+                normas: "Fotos permitidas sin obstaculizar la compra de los vecinos; menores acompañados; no se permiten mascotas en el interior alimentario salvo perros guía.",
+                comoLlegar: "Bus: Líneas L03, L08, L10 y L13 (Paradas en Av. Espanya e Ignasi Wallis a 150 m) | A 2 min a pie de Can Ventosa (#19) y Agencia Tributaria (#21).",
+                relacionado: "Reel: 'La arquitectura donde late el pulso diario de Eivissa' | Mismo pilar: #22 Mercat Vell, #19 Can Ventosa, #17 Consell Insular.",
+                img: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "24",
+                nombre: "Gran Hotel Montesol (Paseo de Vara de Rey)",
+                pilar: "El Legado Racionalista",
+                municipio: "Eivissa",
+                direccion: "Passeig de Vara de Rey, 2, 07800 Eivissa",
+                coordenadas: "38°54'34.0\"N 1°26'02.5\"E",
+                titularidad: "Privada (Bien de Interés Cultural con visita institucional concertada)",
+                arquitecto: "Joan Gómez Ripoll 'Campos'",
+                fechas: "Proyecto: 1932 | Inauguración oficial: Julio de 1933",
+                reformas: "Restauración integral de fachada e interiorismo histórico (2016 y 2023)",
+                importa: "Primer hotel construido expresamente en la historia de Ibiza (1933), situado en la cabecera del Paseo de Vara de Rey; fue el refugio de los arquitectos del GATCPAC, escritores y artistas internacionales.",
+                mirar: "Su icónica fachada en esquina curva entre Vara de Rey y el puerto, el rótulo histórico de época, el contraste blanco y amarillo ocre y los balcones con mallorquinas.",
+                curiosidad: "Durante la Guerra Civil y la Segunda Guerra Mundial el edificio fue requisado por el ejército, antes de volver a convertirse en el salón social más cosmopolita de la isla.",
+                superficie: "2.150 m² distribuidos en planta baja comercial y 3 plantas superiores",
+                sistema: "Muros de carga perimetrales y estructura interior de pilares con forjados de viguería metálica y bovedilla cerámica.",
+                materiales: "Mampostería revocada con estuco de cal, molduras racionalistas-coloniales, hierro forjado en barandillas y carpintería de madera.",
+                orientacion: "Este-Sur presidiendo el salón urbano de Vara de Rey hacia el Puerto",
+                bioclimatica: "Techos de más de 3,40 m de altura libre, balcones corridos de sombra y contraventanas mallorquinas regulables para filtrar la brisa del puerto.",
+                catalogacion: "Bien de Interés Cultural (BIC - Conjunto Histórico de La Marina y Vara de Rey).",
+                docGrafica: "Fotos: Arxiu Històric d'Eivissa (1933 vs actualidad) | Alzados originales de Joan Gómez Ripoll | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:30 y 12:00) | Aforo: 15 pax/turno | Duración: 35 min | Guiada por vestíbulo histórico, escalera y terraza | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas desde el paseo peatonal de Vara de Rey; ascensor interior y aseos adaptados.",
+                normas: "Fotos permitidas en zonas comunes visitables; silencio en pasillos de habitaciones; menores acompañados; sin mascotas.",
+                comoLlegar: "En el paseo peatonal de Vara de Rey | A 40 m del Teatro Pereyra (#04) y a 2 min del Mercat Vell (#22) | Ruta: 'Pioneros de la Modernidad'.",
+                relacionado: "Carrusel: '1933: El edificio que abrió Ibiza a los viajeros del mundo' | Mismo pilar: #03 Casa Broner, #04 Teatro Pereyra, #14 Can Pep Simó.",
+                img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "25",
+                nombre: "Museo de Arte Contemporáneo de Eivissa — MACE (Dalt Vila)",
+                pilar: "Arquitectura Contemporánea",
+                municipio: "Eivissa",
+                direccion: "Ronda de Narcís Puget, s/n, Dalt Vila, 07800 Eivissa",
+                coordenadas: "38°54'23.1\"N 1°26'10.9\"E",
+                titularidad: "Pública (Ajuntament d'Eivissa)",
+                arquitecto: "Sala de Armas histórica: Simón Poulet (1727) | Ampliación moderna: Víctor Beltrán Roca",
+                fechas: "Edificio original: 1727 | Proyecto ampliación: 2005 | Inauguración: 2012",
+                reformas: "Renovación de iluminación museográfica y climatización (2022)",
+                importa: "Uno de los museos de arte contemporáneo más antiguos de España (fundado en 1969), cuya ampliación subterránea de 2012 es una lección magistral de cómo dialogar con la arqueología y las murallas.",
+                mirar: "El contraste entre la bóveda militar de piedra de 1727 y las tres plantas blancas excavadas bajo tierra, iluminadas por un gran lucernario y con suelo de cristal sobre ruinas fenicias.",
+                curiosidad: "Mientras excavaban el solar para ampliar el museo aparecieron viviendas fenicias del siglo VII a.C., restos romanos y casas islámicas; hoy caminas literalmente sobre ellos a través de un pavimento de vidrio.",
+                superficie: "2.350 m² construidos (edificio del s. XVIII + 3 niveles subterráneos)",
+                sistema: "Bóveda de cañón de sillería de marès en el edificio de 1727; muros pantalla de hormigón armado blanco y losas postensadas en la ampliación bajo rasante.",
+                materiales: "Piedra de marès histórica, hormigón blanco arquitectónico, vidrio estructural laminado transitable, acero inoxidable y pavimentos de madera de roble.",
+                orientacion: "Norte-Sur integrado en la plataforma del Baluarte de Sant Joan",
+                bioclimatica: "Estabilidad térmica geotérmica de las salas subterráneas, luz natural cenital tamizada y control higrotérmico de conservación museística.",
+                catalogacion: "Premio de Arquitectura del COAIB, Bien de Interés Cultural (BIC) y Patrimonio Mundial UNESCO.",
+                docGrafica: "Fotos: MACE / Ajuntament d'Eivissa | Sección longitudinal mostrando las 3 plantas bajo tierra y el yacimiento | Vídeo 'La materia habla': Sí.",
+                visita: "Sábado y Domingo (10:00–14:00 y 17:00–20:00) | Aforo: 25 pax/turno | Duración: 45 min | Guiada por arquitectos y conservadores | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas en sus 4 plantas mediante ascensor y rampas; aseos adaptados; bucle magnético.",
+                normas: "Fotos permitidas sin flash ni trípode; obligatorio dejar mochilas en taquilla; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Línea L45 (Parada MACE en la misma puerta) | A 150 m del Portal de ses Taules y a 1 min de Es Polvorí (#08) y Can Botino (#16).",
+                relacionado: "Reel: 'Arte de vanguardia flotando sobre 2.600 años de historia' | Mismo pilar: #08 Es Polvorí, #29 Palacio de Congresos, #15 Las Boas.",
+                img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "26",
+                nombre: "Estación Marítima del Puerto de Ibiza",
+                pilar: "Arquitectura Contemporánea",
+                municipio: "Eivissa",
+                direccion: "Passeig Marítim Joan Carles I / Muelle de Botafoch, 07800 Eivissa",
+                coordenadas: "38°54'32.6\"N 1°26'51.8\"E",
+                titularidad: "Pública (Autoritat Portuària de Balears)",
+                arquitecto: "Ingeniería y Arquitectura Portuaria Contemporánea (APB)",
+                fechas: "Terminal de Botafoc y remodelaciones contemporáneas: Siglo XXI",
+                reformas: "Adecuación de pasarelas de embarque (fingers), envolvente acristalada y eficiencia solar",
+                importa: "La gran puerta marítima de entrada y salida de residentes y visitantes de la isla, una infraestructura contemporánea de gran escala diseñada para gestionar flujos humanos frente a la silueta de Dalt Vila.",
+                mirar: "La ligereza de su estructura metálica y acristalada, las grandes luces libres del vestíbulo de pasajeros y las pasarelas elevadas con vistas directas a la ciudad amurallada.",
+                curiosidad: "Open House Ibiza permite recorrer las entrañas técnicas y operativas de la terminal que habitualmente cruzamos con prisa al embarcar.",
+                superficie: "4.500 m² de terminal, galerías de embarque y zonas operativas",
+                sistema: "Estructura metálica espacial de grandes luces sobre apoyos puntuales de hormigón armado y fachadas de muro cortina resistente a la presión de viento marino.",
+                materiales: "Acero estructural galvanizado y lacado con protección marina C5-M, vidrio laminado de control solar, aluminio anodizado y pavimentos pétreos de alto tránsito.",
+                orientacion: "Suroeste mirando a la dársena interior del Puerto y a Dalt Vila",
+                bioclimatica: "Aleros perimetrales de sombreamiento, vidrios de control solar, iluminación natural cenital e integración de paneles fotovoltaicos en cubierta.",
+                catalogacion: "Infraestructura Estratégica de la Autoritat Portuària de Balears.",
+                docGrafica: "Fotos: Autoritat Portuària de Balears | Planta general de flujos y sección estructural | Vídeo 'La materia habla': No.",
+                visita: "Sábado y Domingo (10:30 y 12:00) | Aforo: 20 pax/turno | Duración: 40 min | Visita guiada con acreditación previa (DNI) | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas (rampas mecánicas, ascensores de gran capacidad, encaminamientos podotáctiles, bucle magnético y baños PMR).",
+                normas: "Imprescindible presentar DNI/NIE por normativa portuaria; fotos permitidas excepto en controles de seguridad; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Línea L12B (Parada Estación Marítima Botafoc en la puerta) | Parking propio | A 4 min a pie del Edificio Las Boas (#15) y del Faro de Botafoc (#09).",
+                relacionado: "Carrusel: 'Ingeniería en primera línea de mar' | Mismo pilar: #09 Faro de Botafoc, #15 Edificio Las Boas, #27 Hospital Can Misses.",
+                img: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "27",
+                nombre: "Hospital Can Misses (Complejo Sanitario de Eivissa)",
+                pilar: "Arquitectura Social",
+                municipio: "Eivissa",
+                direccion: "C/ de Corona, s/n, Can Misses, 07800 Eivissa",
+                coordenadas: "38°54'47.5\"N 1°24'58.2\"E",
+                titularidad: "Pública (Servei de Salut de les Illes Balears — IB-Salut)",
+                arquitecto: "Estudio de Arquitectura Hospitalaria (Concurso Público del Nuevo Can Misses)",
+                fechas: "Proyecto: 2008 | Obra: 2010–2014 | Inauguración oficial: 2015",
+                reformas: "Reconversión de bloques del antiguo hospital (Edificio J) e instalaciones solares (2022)",
+                importa: "La mayor obra de arquitectura pública y social de las Pitiusas: una auténtica 'ciudad sanitaria' diseñada en peine horizontal para que todas las habitaciones reciban luz natural y vistas al paisaje.",
+                mirar: "La gran calle interior acristalada que vertebra los ocho bloques como una rambla luminosa, los patios ajardinados terapéuticos y las lamas de protección solar.",
+                curiosidad: "En lugar de levantar una torre hospitalaria vertical agresiva, el proyecto se escalonó en bloques bajos blancos adaptados a la colina de Can Misses para respetar el perfil de la isla.",
+                superficie: "46.000 m² construidos distribuidos en 8 edificios interconectados",
+                sistema: "Estructura reticular de hormigón armado de alta resistencia sísmica con galería longitudinal vertebradora y patios de luz intercalados.",
+                materiales: "Paneles prefabricados de hormigón blanco arquitectónico, celosías de aluminio orientables, vidrio de control solar y acústico, y suelos continuos antibacterianos.",
+                orientacion: "Bloques de hospitalización orientados al Sur-Sureste hacia la luz y vistas despejadas",
+                bioclimatica: "Arquitectura salutogénica: 100% de habitaciones y consultas con luz natural a través de patios ingleses y jardines; cogeneración energética y gran parque solar en aparcamientos.",
+                catalogacion: "Infraestructura Sanitaria Pública de Referencia de las Islas Baleares.",
+                docGrafica: "Fotos: Área de Salud de Ibiza y Formentera | Planimetría general de los 8 bloques y sección bioclimática | Vídeo 'La materia habla': Sí (Arquitectura que cura).",
+                visita: "Sábado (10:30 y 12:00) | Aforo: 20 pax/turno | Duración: 45 min | Visita guiada por el atrio principal, patios bioclimáticos y galería técnica (sin interferir zonas clínicas) | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "Accesibilidad universal 100% garantizada en todo el recinto, ascensores adaptados, señalética cognitiva y baños PMR.",
+                normas: "Silencio y respeto absoluto al entorno sanitario; fotos permitidas solo de elementos arquitectónicos sin captar pacientes ni personal; sin mascotas.",
+                comoLlegar: "Bus: Líneas L03, L08, L10, L13 y L50 (Parada Hospital Can Misses en la entrada principal) | Amplio aparcamiento gratuito | A 5 min a pie del Conservatorio (#30).",
+                relacionado: "Reel: 'Cómo se diseña un hospital lleno de luz mediterránea' | Mismo pilar: #30 Conservatorio de Música, #20 Seguridad Social, #17 Consell Insular.",
+                img: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "28",
+                nombre: "Centro Cultural de Jesús (Nostra Senyora de Jesús)",
+                pilar: "Arquitectura Social",
+                municipio: "Santa Eulària des Riu",
+                direccion: "C/ des Faisà, 7, Nostra Senyora de Jesús, 07819 Santa Eulària des Riu",
+                coordenadas: "38°55'43.2\"N 1°27'12.5\"E",
+                titularidad: "Pública (Ajuntament de Santa Eulària des Riu)",
+                arquitecto: "Arquitectura de Equipamientos Municipales de Santa Eulària",
+                fechas: "Inauguración: Siglo XXI (c. 2008–2012)",
+                reformas: "Mejora acústica del auditorio y eficiencia lumínica (2021)",
+                importa: "El corazón cívico, asociativo y escénico de la parroquia de Jesús, un edificio público contemporáneo que resuelve en volúmenes blancos limpios un auditorio, biblioteca, salas de ensayo y exposiciones.",
+                mirar: "El juego de prismas blancos macizos del exterior frente a la calidez acústica de madera de su auditorio de 250 butacas y el vestíbulo de exposiciones.",
+                curiosidad: "Su diseño exterior ciego en las cajas escénicas y abierto en las zonas de lectura dialoga directamente con la iglesia histórica de Jesús situada a pocos metros.",
+                superficie: "1.950 m² construidos",
+                sistema: "Pórticos y muros pantalla de hormigón armado combinados con estructura metálica de gran luz sobre el patio de butacas.",
+                materiales: "Mortero monocapa y revoco blanco, paneles fonoabsorbentes de madera de haya en auditorio, piedra natural en vestíbulo y carpintería de aluminio.",
+                orientacion: "Acceso principal al Sur hacia la plaza peatonal",
+                bioclimatica: "Aislamiento acústico y térmico reforzado en envolvente, lucernarios de luz indirecta en biblioteca y climatización por zonas según ocupación.",
+                catalogacion: "Equipamiento Cultural Municipal de Santa Eulària des Riu.",
+                docGrafica: "Fotos: Ajuntament de Santa Eulària | Planta de distribución y sección acústica del auditorio | Vídeo 'La materia habla': No.",
+                visita: "Sábado y Domingo (10:30–13:30) | Aforo: 25 pax | Duración: 35 min | Guiada (auditorio, cabina técnica, biblioteca y salas) | 2 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas en todas sus dependencias, ascensor, rampa de acceso y aseos adaptados.",
+                normas: "Fotos permitidas; silencio en zona de biblioteca si hay usuarios; menores acompañados; sin mascotas en el interior.",
+                comoLlegar: "Bus: Línea L12A y L13 (Parada centro de Jesús a 150 m) | Parking público gratuito junto al centro | A 4 min en coche de Can Pep Simó (#14).",
+                relacionado: "Carrusel: 'El punto de encuentro cultural de Jesús' | Mismo pilar: #29 Palacio de Congresos, #19 Can Ventosa, #30 Conservatorio.",
+                img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "29",
+                nombre: "Palacio de Congresos de Ibiza (Santa Eulària des Riu)",
+                pilar: "Arquitectura Contemporánea",
+                municipio: "Santa Eulària des Riu",
+                direccion: "Avinguda del Doctor Camacho, 9-11, 07840 Santa Eulària des Riu",
+                coordenadas: "38°59'08.9\"N 1°32'25.4\"E",
+                titularidad: "Pública (Ajuntament de Santa Eulària des Riu)",
+                arquitecto: "Marià Castelló y José Antonio Molina (Concurso Público de Arquitectura)",
+                fechas: "Proyecto y Fase I: 2008 | Ampliación y entorno: 2018–2023",
+                reformas: "Optimización tecnológica y paisajística reciente",
+                importa: "Una de las obras de arquitectura contemporánea más premiadas de las Pitiusas: un edificio-paisaje blanco frente al mar que reinterpreta la geometría vernácula y las eras tradicionales a escala monumental.",
+                mirar: "El gran plano inclinado blanco que convierte la cubierta en una plaza-mirador pública frente al Mediterráneo y el lucernario circular que baña de luz el vestíbulo.",
+                curiosidad: "El edificio se entierra parcialmente en el terreno costero para no levantar una barrera visual frente a los pinares y el mar de Es Caló de s'Alga.",
+                superficie: "5.200 m² construidos (Auditorio principal de 453 plazas, salas modulares y gran hall)",
+                sistema: "Estructura de hormigón armado blanco de grandes luces y cerchas metálicas sobre la caja escénica y el auditorio.",
+                materiales: "Hormigón blanco continuo, revoco de cal y árido de mármol blanco, vidrio estructural de control solar y revestimientos interiores de madera acústica.",
+                orientacion: "Sur-Sureste abriéndose en abanico hacia el mar Mediterráneo",
+                bioclimatica: "Inercia térmica del semienterramiento, envolvente 100% blanca de máxima reflectancia (efecto albedo) y ventilación natural en el vestíbulo perimetral.",
+                catalogacion: "Seleccionado en los Premios de Arquitectura de las Islas Baleares (COAIB).",
+                docGrafica: "Fotos: Marià Castelló (con derechos cedidos) | Plantas, alzados y secciones del concurso | Vídeo 'La materia habla': Sí (Hormigón, luz y horizonte).",
+                visita: "Sábado y Domingo (10:30, 12:00 y 17:00) | Aforo: 30 pax | Duración: 45 min | Guiada por arquitectos (incluye cubierta-mirador y auditorio) | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas (rampas exteriores suaves, ascensores, butacas reservadas PMR, aseos adaptados y bucle magnético).",
+                normas: "Fotos totalmente permitidas; menores acompañados; mascotas permitidas en la plaza-cubierta exterior.",
+                comoLlegar: "Bus: Líneas L13 y L16 (Parada Santa Eulària a 600 m por el paseo marítimo) | Parking gratuito en la misma puerta | A 5 min del Puig de Missa (#05).",
+                relacionado: "Reel: 'Cuando un edificio se convierte en una plaza frente al mar' | Mismo pilar: #25 MACE, #15 Edificio Las Boas, #28 Centro Cultural de Jesús.",
+                img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80"
+            },
+            {
+                num: "30",
+                nombre: "Conservatorio Profesional de Música y Danza de Eivissa y Formentera",
+                pilar: "Arquitectura Social",
+                municipio: "Eivissa",
+                direccion: "Avinguda d'Espanya, s/n (Zona escolar Sa Blanca Dona / Can Misses), 07800 Eivissa",
+                coordenadas: "38°54'41.2\"N 1°25'09.6\"E",
+                titularidad: "Pública (Conselleria d'Educació — Govern de les Illes Balears)",
+                arquitecto: "Arquitectos del IBISEC (Institut Balear d'Infraestructures i Serveis Educatius)",
+                fechas: "Construcción: Finales del s. XX – Ampliación y reforma acústica en s. XXI",
+                reformas: "Adecuación de cabinas insonorizadas, aulas de danza y auditorio Catalina Bufí",
+                importa: "Cierra las 30 puertas del festival mostrando una arquitectura diseñada específicamente para el sonido y el movimiento: el centro público donde se forma el talento musical y dancístico de Ibiza y Formentera.",
+                mirar: "El Auditorio Catalina Bufí con su geometría quebrada de paneles de madera para proyectar el sonido sin micrófonos, y las aulas de danza con grandes ventanales y suelos elásticos.",
+                curiosidad: "Cada aula de instrumento está construida como una 'caja dentro de otra caja' flotante sobre neoprenos para que una trompeta o una batería no se escuchen en la sala contigua.",
+                superficie: "3.150 m² construidos (Auditorio, 35 cabinas y aulas acústicas, aulas de danza y biblioteca musical)",
+                sistema: "Estructura de hormigón armado con tabiquería acústica multicapa desolidarizada y suelos flotantes elásticos.",
+                materiales: "Hormigón visto y bloque cerámico pesado para aislamiento acústico, paneles reflectores y absorbentes de madera de haya, lana de roca de alta densidad y tarimas flotantes.",
+                orientacion: "Aulas de danza al Norte (luz constante sin calor directo) y bloque de aulas con protección solar al Sur",
+                bioclimatica: "Doble acristalamiento acústico-térmico laminar, ventilación silenciosa de baja velocidad e iluminación natural controlada en salas de danza.",
+                catalogacion: "Equipamiento Educativo y Artístico Oficial de las Pitiusas.",
+                docGrafica: "Fotos: Conservatori d'Eivissa / IBISEC | Sección acústica del Auditorio Catalina Bufí y detalle de 'caja flotante' | Vídeo 'La materia habla': Sí (La arquitectura del silencio y la música).",
+                visita: "Sábado (10:30, 11:30 y 12:30) | Aforo: 25 pax/turno | Duración: 45 min | Guiada con microconcierto acústico en el auditorio | 3 voluntarios | ES / CA / EN",
+                accesibilidad: "100% accesible en silla de ruedas (acceso sin desniveles, ascensor a plantas superiores, plazas PMR en auditorio y baños adaptados).",
+                normas: "Fotos permitidas; silencio absoluto al pasar junto a aulas con ensayos activos; menores acompañados; sin mascotas.",
+                comoLlegar: "Bus: Líneas L03, L08, L10 y L14 (Parada final Av. Espanya / Can Misses a 100 m) | Parking gratuito exterior | A 4 min a pie del Hospital Can Misses (#27).",
+                relacionado: "Carrusel: 'Cajas flotantes: la ingeniería secreta detrás de la música' | Mismo pilar: #19 Can Ventosa, #27 Hospital Can Misses, #28 Centro Cultural de Jesús.",
+                img: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80"
+            }
+        ];
+
+        function obtenerBaseUrl() {
+            const custom = document.getElementById('customBaseUrl').value.trim();
+            if (custom) return custom.split('?')[0];
+            if (window.location.protocol.startsWith('http')) {
+                return window.location.origin + window.location.pathname;
+            }
+            return "https://openhouse-ibiza-2027.tiiny.site/";
+        }
+
+        function renderCatalogo() {
+            const container = document.getElementById('catalogoContainer');
+            const selector = document.getElementById('selectorFicha');
+            container.innerHTML = '';
+
+            const baseUrl = obtenerBaseUrl();
+
+            espacios30.forEach((e) => {
+                const opt = document.createElement('option');
+                opt.value = e.num;
+                opt.textContent = `Puerta #${e.num} — ${e.nombre}`;
+                selector.appendChild(opt);
+
+                const targetUrl = `${baseUrl}?ficha=${e.num}`;
+                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(targetUrl)}`;
+
+                const card = document.createElement('div');
+                card.className = 'ficha-page';
+                card.id = `ficha-${e.num}`;
+
+                card.innerHTML = `
+                    <div class="ficha-header">
+                        <div>
+                            <span class="pilar-tag" contenteditable="true">PUERTA #${e.num} · PILAR: ${e.pilar}</span>
+                            <h2 class="ficha-title" contenteditable="true">${e.nombre}</h2>
+                            <div class="id-meta" contenteditable="true">
+                                <span><strong>Municipio:</strong> ${e.municipio}</span>
+                                <span><strong>Dirección:</strong> ${e.direccion}</span>
+                                <span><strong>Coordenadas:</strong> ${e.coordenadas}</span>
+                                <span><strong>Titularidad:</strong> ${e.titularidad}</span>
+                            </div>
+                        </div>
+                        <a class="qr-box" id="qr-link-${e.num}" href="?ficha=${e.num}" title="Haz clic o escanea para abrir solo la Ficha #${e.num}">
+                            <img id="qr-img-${e.num}" src="${qrUrl}" alt="QR Puerta ${e.num}">
+                            <span>QR Ficha #${e.num}</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-grid">
+                        <div class="foto-container">
+                            <img src="${e.img}" alt="${e.nombre}">
+                            <label class="btn-upload">
+                                📷 Subir foto desde tu PC
+                                <input type="file" accept="image/*" style="display:none" onchange="cambiarImagen(this)">
+                            </label>
+                        </div>
+                        <div class="autoria-panel">
+                            <div>
+                                <div class="block-label">📐 BLOQUE: AUTORÍA Y FECHAS</div>
+                                <div class="data-list">
+                                    <div class="data-item full" contenteditable="true">
+                                        <small>Arquitecto/a o Constructor</small>
+                                        <div>${e.arquitecto}</div>
+                                    </div>
+                                    <div class="data-item" contenteditable="true">
+                                        <small>Año de Proyecto y de Obra</small>
+                                        <div>${e.fechas}</div>
+                                    </div>
+                                    <div class="data-item" contenteditable="true">
+                                        <small>Reformas Posteriores</small>
+                                        <div>${e.reformas}</div>
+                                    </div>
+                                    <div class="data-item full" contenteditable="true">
+                                        <small>Documentación Gráfica Asociada</small>
+                                        <div>${e.docGrafica}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nivel-divulgativo">
+                        <span class="nivel-badge">NIVEL 1 · LECTURA DIVULGATIVA (RESIDENTES Y FAMILIAS)</span>
+                        <div class="divulgativa-box" contenteditable="true">
+                            <p><strong>• Por qué importa:</strong> ${e.importa}</p>
+                            <p><strong>• Qué mirar al entrar:</strong> ${e.mirar}</p>
+                            <p><strong>• Una curiosidad:</strong> ${e.curiosidad}</p>
+                        </div>
+
+                        <div class="logistica-grid">
+                            <div class="log-card" contenteditable="true">
+                                <h4>🕒 Visita</h4>
+                                <div>${e.visita}</div>
+                            </div>
+                            <div class="log-card" contenteditable="true">
+                                <h4>♿ Accesibilidad</h4>
+                                <div>${e.accesibilidad}</div>
+                            </div>
+                            <div class="log-card" contenteditable="true">
+                                <h4>📋 Normas del Espacio</h4>
+                                <div>${e.normas}</div>
+                            </div>
+                            <div class="log-card" contenteditable="true">
+                                <h4>🚌 Cómo Llegar y Rutas</h4>
+                                <div>${e.comoLlegar}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nivel-tecnico">
+                        <details>
+                            <summary>
+                                <span>🔍 NIVEL 2 · DETALLE TÉCNICO Y CONSTRUCTIVO (DESPLEGABLE PARA PROFESIONALES)</span>
+                                <span class="summary-tag">PULSAR PARA DESPLEGAR</span>
+                            </summary>
+                            <div class="tecnico-body">
+                                <div class="tec-box" contenteditable="true">
+                                    <strong>Superficie Construida / Ámbito</strong>
+                                    ${e.superficie}
+                                </div>
+                                <div class="tec-box" contenteditable="true">
+                                    <strong>Orientación Solar y Dominante</strong>
+                                    ${e.orientacion}
+                                </div>
+                                <div class="tec-box full" contenteditable="true">
+                                    <strong>Sistema Constructivo y Estructural</strong>
+                                    ${e.sistema}
+                                </div>
+                                <div class="tec-box full" contenteditable="true">
+                                    <strong>Materiales Empleados (Cal, Sabina, Piedra seca, Marès, Posidonia...)</strong>
+                                    ${e.materiales}
+                                </div>
+                                <div class="tec-box" contenteditable="true">
+                                    <strong>Estrategias Bioclimáticas y Eficiencia</strong>
+                                    ${e.bioclimatica}
+                                </div>
+                                <div class="tec-box" contenteditable="true">
+                                    <strong>Catalogación Patrimonial y Premios</strong>
+                                    ${e.catalogacion}
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="ficha-footer">
+                        <div class="relacionado-bar" contenteditable="true">
+                            <strong>🔗 Relacionado:</strong> ${e.relacionado}
+                        </div>
+                        <div class="prod-control" contenteditable="true">
+                            <span><strong>Formato triple:</strong> Web QR · PDF 1 pág. Profesionales · Folleto "48h para redescubrir Ibiza"</span>
+                            <span><strong>Control de producción:</strong> Última revisión: 28/10/2026 | Redacción: Equipo Editorial Alumnado | Validado: Dirección OHI</span>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            comprobarParametroQR();
+        }
+
+        function actualizarQRs() {
+            const baseUrl = obtenerBaseUrl();
+            espacios30.forEach((e) => {
+                const targetUrl = `${baseUrl}?ficha=${e.num}`;
+                const qrImg = document.getElementById(`qr-img-${e.num}`);
+                const qrLink = document.getElementById(`qr-link-${e.num}`);
+                if (qrImg) {
+                    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(targetUrl)}`;
+                }
+                if (qrLink) {
+                    qrLink.href = targetUrl;
+                }
+            });
+        }
+
+        function comprobarParametroQR() {
+            const params = new URLSearchParams(window.location.search);
+            const fichaParam = params.get('ficha');
+            if (fichaParam) {
+                filtrarPorNumero(fichaParam);
+            }
+        }
+
+        function seleccionarDesdeMenu() {
+            const val = document.getElementById('selectorFicha').value;
+            if (val === 'all') {
+                mostrarTodas();
+            } else {
+                filtrarPorNumero(val);
+            }
+        }
+
+        function filtrarPorNumero(num) {
+            const fichas = document.querySelectorAll('.ficha-page');
+            fichas.forEach(f => {
+                f.style.display = (f.id === `ficha-${num}`) ? 'block' : 'none';
+            });
+            document.getElementById('selectorFicha').value = num;
+            document.getElementById('bannerQR').style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function mostrarTodas() {
+            document.querySelectorAll('.ficha-page').forEach(f => f.style.display = 'block');
+            document.getElementById('selectorFicha').value = 'all';
+            document.getElementById('bannerQR').style.display = 'none';
+            if (window.history.pushState) {
+                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+            }
+        }
+
+        function cambiarImagen(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const img = input.closest('.foto-container').querySelector('img');
+                    img.src = ev.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function toggleDetalles(abrir) {
+            document.querySelectorAll('.nivel-tecnico details').forEach(d => d.open = abrir);
+        }
+
+        renderCatalogo();
+    </script>
+</body>
+</html>
